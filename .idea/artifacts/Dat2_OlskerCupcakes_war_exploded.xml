@@ -1,0 +1,34 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Dat2-OlskerCupcakes:war exploded">
+    <output-path>$PROJECT_DIR$/target/Dat2-OlskerCupcakes-1.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>Dat2-OlskerCupcakes</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Dat2-OlskerCupcakes" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.30" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.19.4" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: p6spy:p6spy:3.9.1" />
+          <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:4.0.3" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.36" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.3" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/Dat2-OlskerCupcakes-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="Dat2-OlskerCupcakes/web/Web" />
+    </root>
+  </artifact>
+</component>
