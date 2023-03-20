@@ -6,6 +6,3 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-
-!/src/main/java/dat/backend/model/persistence/ConnectionPool.java
-!/src/test/java/dat/backend/persistence/UserMapperTest.java
