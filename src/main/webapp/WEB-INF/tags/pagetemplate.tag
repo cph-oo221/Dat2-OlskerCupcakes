@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><jsp:invoke fragment="header"/></title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+    <!-- Favicon on every jsp side -->
+    <link rel="icon" href="<%=request.getContextPath()%>/images/favicon.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -54,16 +56,19 @@
     <hr/>
     <div class="row mt-4">
         <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+            <a href="https://www.google.com/maps/place/Kureg%C3%A5rdsvej+7,+3782+Klemensker/@55.1789673,14.848106,17z/data=!3m1!4b1!4m6!3m5!1s0x46550f13f0fad93d:0x9d7f6d7ffdb98b8b!8m2!3d55.1789673!4d14.8502947!16s%2Fg%2F11c1v980qq"
+            target="_blank" style="text-decoration: none;">
+                Kuregårdsvej 7<br/>
+                3782 Klemensker
+            </a>
         </div>
         <div class="col">
             <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
+            <p>&copy; 2022 - Olsker Cupcakes</p>
         </div>
         <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester efterår 2022
+            Kontakt Information:<br/>
+            olskercupcakes@gmail.com
         </div>
     </div>
 
