@@ -178,3 +178,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+!/src/main/java/dat/backend/model/persistence/ConnectionPool.java
