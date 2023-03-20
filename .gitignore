@@ -181,4 +181,5 @@ Temporary Items
 
 !/src/main/java/dat/backend/model/persistence/ConnectionPool.java
 !/src/test/java/dat/backend/persistence/UserMapperTest.java
+src/test/java/dat/backend/persistence/UserMapperTest.java
 src/main/java/dat/backend/model/persistence/ConnectionPool.java
