@@ -19,7 +19,7 @@ class UserMapperTest
     // TODO: Change mysql login credentials if needed below
 
     private final static String USER = "root";
-    private final static String PASSWORD = "Frederik1988";
+    private final static String PASSWORD = "oo123";
     private final static String URL = "jdbc:mysql://localhost:3306/oskarsmuffins_test?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
 
     private static ConnectionPool connectionPool;
