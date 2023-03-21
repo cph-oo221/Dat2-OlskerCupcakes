@@ -36,11 +36,11 @@ public class SignUp extends HttpServlet
         session.setAttribute("user", null);
         String email = request.getParameter("username");
         String password = request.getParameter("password");
+        String role = "user";
 
-        User user;
         try
         {
-            user = Facade.createUser(email,password,"user", connectionPool);
+            User user = Facade.createUser(email, password, role, connectionPool);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
             request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
