@@ -1,10 +1,14 @@
 package dat.backend.model.persistence;
 
+
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
-public class UserFacade
+// Behold! the eternal gate of all data!
+
+public class Facade
 {
+    // User *************************
     public static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         return UserMapper.login(username, password, connectionPool);
@@ -14,4 +18,5 @@ public class UserFacade
     {
         return UserMapper.createUser(username, password, role, connectionPool);
     }
+    // ************************************
 }

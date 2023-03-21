@@ -4,25 +4,27 @@ import java.util.Objects;
 
 public class User
 {
-    private String username;
+    private String email;
     private String password;
     private String role;
+    private int balance;
 
-    public User(String username, String password, String role)
+    public User(String username, String password, String role, int balance)
     {
-        this.username = username;
+        this.email = username;
         this.password = password;
         this.role = role;
+        this.balance = balance;
     }
 
     public String getUsername()
     {
-        return username;
+        return email;
     }
 
     public void setUsername(String username)
     {
-        this.username = username;
+        this.email = username;
     }
 
     public String getPassword()
@@ -65,7 +67,7 @@ public class User
     public String toString()
     {
         return "User{" +
-                "brugerNavn='" + username + '\'' +
+                "e-mail='" + email + '\'' +
                 ", kodeord='" + password + '\'' +
                 ", rolle='" + role + '\'' +
                 '}';

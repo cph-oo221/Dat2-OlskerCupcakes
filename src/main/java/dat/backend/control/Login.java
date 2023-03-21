@@ -3,8 +3,8 @@ package dat.backend.control;
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.UserFacade;
 import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.Facade;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +41,7 @@ public class Login extends HttpServlet
 
         try
         {
-            User user = UserFacade.login(username, password, connectionPool);
+            User user = Facade.login(username, password, connectionPool);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
             request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
