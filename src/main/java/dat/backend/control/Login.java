@@ -41,7 +41,7 @@ public class Login extends HttpServlet
 
         try
         {
-            User user = Facade.login(username, password, connectionPool);
+            User user = Facade.login(email, password, connectionPool);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
             request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
