@@ -22,11 +22,11 @@
 </head>
 <body>
 <header>
-    <!--  HEADER   -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<%--     HEADER                             light   light --%>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/CupcakeBanner.png" width="400px;" class="img-fluid"/>
+                <img src="${pageContext.request.contextPath}/images/CupcakeBanner955x205.png" width="400px;" class="img-fluid" alt="Banner foto for Olsker Cupcakes, no background with 4 cupcakes and titel"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,11 +68,13 @@
                 3782 Klemensker
             </a>
         </div>
+
         <div class="col text-center">
             <jsp:invoke fragment="footer"/>
             <br/>
             <p>&copy; 2022 - Olsker Cupcakes</p>
         </div>
+
         <div class="col text-center">
             Kontakt Information:<br/>
             olskercupcakes@gmail.com<br/>
