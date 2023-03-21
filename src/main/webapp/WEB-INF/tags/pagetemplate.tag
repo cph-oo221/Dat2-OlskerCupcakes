@@ -61,21 +61,21 @@
 <div class="container mt-3">
     <hr/>
     <div class="row mt-4">
-        <div class="col">
+        <div class="col text-center">
             <a href="https://www.google.com/maps/place/Kureg%C3%A5rdsvej+7,+3782+Klemensker/@55.1789673,14.848106,17z/data=!3m1!4b1!4m6!3m5!1s0x46550f13f0fad93d:0x9d7f6d7ffdb98b8b!8m2!3d55.1789673!4d14.8502947!16s%2Fg%2F11c1v980qq"
                target="_blank" style="text-decoration: none;">
                 Kuregårdsvej 7<br/>
                 3782 Klemensker
             </a>
         </div>
-        <div class="col">
+        <div class="col text-center">
             <jsp:invoke fragment="footer"/>
             <br/>
             <p>&copy; 2022 - Olsker Cupcakes</p>
         </div>
-        <div class="col">
+        <div class="col text-center">
             Kontakt Information:<br/>
-            olskercupcakes@gmail.com
+            olskercupcakes@gmail.com<br/>
         </div>
     </div>
 </div>
