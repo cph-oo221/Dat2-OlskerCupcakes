@@ -61,7 +61,7 @@
     <div class="text-end">
         <c:if test="${sessionScope.user != null }">
             <!-- Link sends you to the logout servlet -->
-            <p>${sessionScope.user.email}</p>
+            <p>${sessionScope.user.username}</p>
         </c:if>
     </div>
 
