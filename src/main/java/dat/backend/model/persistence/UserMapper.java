@@ -59,7 +59,7 @@ class UserMapper
                     user = new User(email, password, role, 0);
                 } else
                 {
-                    throw new DatabaseException("The user with username = " + email + " could not be inserted into the database");
+                    throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");
                 }
             }
         }
