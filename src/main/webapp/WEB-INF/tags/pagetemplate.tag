@@ -34,9 +34,13 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
+<%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>--%>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/browse">Browse</a>
+                    <a class="nav-item nav-link " href="${pageContext.request.contextPath}/">Kurv</a>
+                    <c:if test="${sessionScope.user != null }">
+                        <!-- Link sends you to the logout servlet -->
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kvittering</a>
+                    </c:if>
                     <c:if test="${sessionScope.user == null }">
                         <!-- Link sends you to the login jsp side -->
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
