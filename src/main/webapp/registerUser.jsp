@@ -6,36 +6,28 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-             Login
+             SingUp
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-            Login
+            SingUp
     </jsp:attribute>
 
     <jsp:body>
 
-        <h3>You can log in here</h3>
+        <h3>You can Sing Up here</h3>
 
 
         <div class="text-center mt-5">
-            <form action="login" method="post">
+            <form action="SignUp" method="post">
                 <label for="username" hidden>Username: </label>
-                <input type="text" id="username" name="username" placeholder="Email"/>
+                <input type="text" id="username" name="username" placeholder="Insert Email"/>
                 <br/>
                 <label for="password" hidden>Password: </label><br/>
-                <input type="password" id="password" name="password" placeholder="Password"/>
+                <input type="password" id="password" name="password" placeholder="Insert Password"/>
                 <br/>
                 <br/>
                 <input type="submit" class="btn btn-secondary fw-bold" style="width: 180px;" value="Log in"/>
-            </form>
-        </div>
-
-
-        <div class="text-center mt-1">
-            <form action="registerUser.jsp" method="post">
-                    <%--  style="text-decoration: none" <- this removes the line under a link/button     --%>
-                <input type="submit" class="btn btn-link" style="text-decoration: none" value="Register new user">
             </form>
         </div>
 
