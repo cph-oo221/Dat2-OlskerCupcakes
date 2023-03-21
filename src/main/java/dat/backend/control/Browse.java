@@ -22,7 +22,8 @@ public class Browse extends HttpServlet
     ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
         ArrayList<Top> tops = null;
         ArrayList<Bottom> bottoms = null;
         try {
