@@ -36,6 +36,15 @@ public class Facade
         return bottoms;
     }
 
+    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool)
+    {
+        // TODO: TESTING METHOD, IMPLEMENT DB
+
+        return new Bottom(1, "Chocolate", 5);
+    }
+    // ************************************
+
+
     // Top ********************************
     public static ArrayList<Top> getTops()
     {
@@ -46,6 +55,13 @@ public class Facade
         tops.add(new Top(2, "BlueberryTest", 5));
         tops.add(new Top(3, "RaspberryTest", 5));
         return tops;
+    }
+
+    public static Top getTopById(int idTop, ConnectionPool connectionPool)
+    {
+        // TODO: TESTING METHOD, IMPLEMENT DB
+
+        return new Top(1, "Chocolate", 5);
     }
     // ************************************
 }
