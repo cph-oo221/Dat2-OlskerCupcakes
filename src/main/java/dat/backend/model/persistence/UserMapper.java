@@ -45,7 +45,7 @@ class UserMapper
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user = null;
-        String sql = "insert into User (email, password, role) values (?,?,?)";
+        String sql = "insert into user (email, password, role, balance) values (?,?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
@@ -53,6 +53,7 @@ class UserMapper
                 ps.setString(1, email);
                 ps.setString(2, password);
                 ps.setString(3, role);
+                ps.setInt(4, 0);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
