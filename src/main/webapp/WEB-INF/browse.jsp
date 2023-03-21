@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,7 +14,39 @@
 
     <jsp:body>
 
-        <h1>Cupcake items:</h1>
+        <div class="container m-4">
+            <div class="row">
+                <div class="col">
+                    <h3>Bottoms</h3>
+                    <table>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <c:forEach var="bottom" items="${sessionScope.bottoms}">
+                            <tr>
+                                <td>${bottom.name}</td>
+                                <td>${bottom.price}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                <div class="col">
+                    <h1>Cupcake items:</h1>
+                    <h3>Tops:</h3>
+                    <table>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <c:forEach var="top" items="${sessionScope.tops}">
+                            <tr>
+                                <td>${top.name}</td>
+                                <td>${top.price}</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                <div class="col">
+                    3 of 3
+                </div>
+        </div>
 
 
 
