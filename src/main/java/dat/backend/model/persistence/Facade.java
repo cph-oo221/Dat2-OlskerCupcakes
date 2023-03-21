@@ -28,6 +28,7 @@ public class Facade
     public static ArrayList<Bottom> getBottoms()
     {
         // TODO: TESTING METHOD, IMPLEMENT DB
+        //return BottomMapper.getAllBottoms(ConnectionPool connectionPool);
 
         ArrayList<Bottom> bottoms = new ArrayList<>();
         bottoms.add(new Bottom(1, "ChocolateTest", 5));
@@ -41,7 +42,7 @@ public class Facade
     {
         // TODO: TESTING METHOD IMPLEMENT DB
 
-        //TopMapper.getAllTops(connectionPool);
+        //return TopMapper.getAllTops(ConnectionPool connectionPool);
 
         ArrayList<Top> tops = new ArrayList<>();
         tops.add(new Top(1, "ChocolateTest", 5));
