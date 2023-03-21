@@ -26,7 +26,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/CupcakeBanner955x205.png" width="400px;" class="img-fluid" alt="Banner foto for Olsker Cupcakes, no background with 4 cupcakes and titel"/>
+                <img src="${pageContext.request.contextPath}/images/CupcakeBanner955x205.png" width="400px;"
+                     class="img-fluid" alt="Banner foto for Olsker Cupcakes, no background with 4 cupcakes and titel"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +35,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-<%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>--%>
+                    <%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>--%>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/browse">Browse</a>
                     <a class="nav-item nav-link " href="${pageContext.request.contextPath}/">Kurv</a>
                     <c:if test="${sessionScope.user != null }">
@@ -57,6 +58,13 @@
 
 <!--  BODY   -->
 <div id="body" class="container mt-4" style="min-height: 400px;">
+    <div class="text-end">
+        <c:if test="${sessionScope.user != null }">
+            <!-- Link sends you to the logout servlet -->
+            <p>${sessionScope.user.email}</p>
+        </c:if>
+    </div>
+
     <h1>
         <jsp:invoke fragment="header"/>
     </h1>
