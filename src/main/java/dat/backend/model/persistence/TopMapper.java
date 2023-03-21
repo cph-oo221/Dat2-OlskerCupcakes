@@ -67,7 +67,7 @@ public class TopMapper
     {
         Logger.getLogger("web").log(Level.INFO, "");
         Top top;
-        String sql = "insert into top (name, price) values (?)";
+        String sql = "insert into top (name, price) values (?, ?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

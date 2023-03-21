@@ -43,7 +43,7 @@ public class BottomMapper {
 
         Bottom bottom;
 
-        String sql = "SELECT * FROM bottom";
+        String sql = "SELECT * FROM Bottom;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

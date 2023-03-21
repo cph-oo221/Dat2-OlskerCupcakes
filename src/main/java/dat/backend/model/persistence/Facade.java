@@ -38,6 +38,15 @@ public class Facade
          */
     }
 
+    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool)
+    {
+        // TODO: TESTING METHOD, IMPLEMENT DB
+
+        return new Bottom(1, "Chocolate", 5);
+    }
+    // ************************************
+
+
     // Top ********************************
     public static ArrayList<Top> getTops(ConnectionPool connectionPool) throws DatabaseException {
         // TODO: TESTING METHOD IMPLEMENT DB
@@ -51,6 +60,13 @@ public class Facade
         return tops;
 
          */
+    }
+
+    public static Top getTopById(int idTop, ConnectionPool connectionPool)
+    {
+        // TODO: TESTING METHOD, IMPLEMENT DB
+
+        return new Top(1, "Chocolate", 5);
     }
     // ************************************
 }
