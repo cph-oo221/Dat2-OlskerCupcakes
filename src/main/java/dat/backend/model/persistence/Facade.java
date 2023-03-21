@@ -41,6 +41,8 @@ public class Facade
     {
         // TODO: TESTING METHOD IMPLEMENT DB
 
+        //TopMapper.getAllTops(connectionPool);
+
         ArrayList<Top> tops = new ArrayList<>();
         tops.add(new Top(1, "ChocolateTest", 5));
         tops.add(new Top(2, "BlueberryTest", 5));

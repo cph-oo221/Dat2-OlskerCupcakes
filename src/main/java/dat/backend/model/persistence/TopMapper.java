@@ -94,6 +94,7 @@ public class TopMapper
                 }
             }
         }
+
         catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Could not insert top into database");
