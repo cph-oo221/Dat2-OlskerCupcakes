@@ -26,4 +26,19 @@ public class Top {
         this.name=name;
         this.price=price;
     }
+
+    public int getIdTop()
+    {
+        return idTop;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public int getPrice()
+    {
+        return price;
+    }
 }

@@ -10,18 +10,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><jsp:invoke fragment="header"/></title>
+    <title>
+        <jsp:invoke fragment="header"/>
+    </title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="<%=request.getContextPath()%>/images/favicon1.png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%--  HEADER  --%>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
+                <img src="${pageContext.request.contextPath}/images/CupcakeBanner955x205.png" width="400px;" class="img-fluid" alt="Banner foto for Olsker Cupcakes, no background with 4 cupcakes and titel"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,13 +34,19 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
+<%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>--%>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/browse">Browse</a>
+                    <a class="nav-item nav-link " href="${pageContext.request.contextPath}/">Kurv</a>
+                    <c:if test="${sessionScope.user != null }">
+                        <!-- Link sends you to the logout servlet -->
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kvittering</a>
+                    </c:if>
                     <c:if test="${sessionScope.user == null }">
+                        <!-- Link sends you to the login jsp side -->
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
+                        <!-- Link sends you to the logout servlet -->
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                     </c:if>
                 </div>
@@ -44,37 +55,42 @@
     </nav>
 </header>
 
+<!--  BODY   -->
 <div id="body" class="container mt-4" style="min-height: 400px;">
-    <h1><jsp:invoke fragment="header"/></h1>
+    <h1>
+        <jsp:invoke fragment="header"/>
+    </h1>
     <jsp:doBody/>
 </div>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <div class="container mt-3">
     <hr/>
     <div class="row mt-4">
-        <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+        <div class="col text-center">
+            <a href="https://www.google.com/maps/place/Kureg%C3%A5rdsvej+7,+3782+Klemensker/@55.1789673,14.848106,17z/data=!3m1!4b1!4m6!3m5!1s0x46550f13f0fad93d:0x9d7f6d7ffdb98b8b!8m2!3d55.1789673!4d14.8502947!16s%2Fg%2F11c1v980qq"
+               target="_blank" style="text-decoration: none;">
+                Kuregårdsvej 7<br/>
+                3782 Klemensker
+            </a>
         </div>
-        <div class="col">
-            <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
+
+        <div class="col text-center">
+            <jsp:invoke fragment="footer"/>
+            <br/>
+            <p>&copy; 2022 - Olsker Cupcakes</p>
         </div>
-        <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester efterår 2022
+
+        <div class="col text-center">
+            Kontakt Information:<br/>
+            olskercupcakes@gmail.com<br/>
         </div>
     </div>
-
-</div>
-
 </div>
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
 </body>
 </html>
