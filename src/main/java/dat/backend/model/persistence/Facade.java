@@ -25,30 +25,32 @@ public class Facade
     // ************************************
 
     // Bottom *****************************
-    public static ArrayList<Bottom> getBottoms()
-    {
+    public static ArrayList<Bottom> getBottoms(ConnectionPool connectionPool) throws DatabaseException {
         // TODO: TESTING METHOD, IMPLEMENT DB
-        //return BottomMapper.getAllBottoms(ConnectionPool connectionPool);
+        return BottomMapper.getAllBottoms(connectionPool);
 
-        ArrayList<Bottom> bottoms = new ArrayList<>();
+        /*ArrayList<Bottom> bottoms = new ArrayList<>();
         bottoms.add(new Bottom(1, "ChocolateTest", 5));
         bottoms.add(new Bottom(2, "VanillaTest", 5));
         bottoms.add(new Bottom(3, "NutmegTest", 5));
         return bottoms;
+
+         */
     }
 
     // Top ********************************
-    public static ArrayList<Top> getTops()
-    {
+    public static ArrayList<Top> getTops(ConnectionPool connectionPool) throws DatabaseException {
         // TODO: TESTING METHOD IMPLEMENT DB
 
-        //return TopMapper.getAllTops(ConnectionPool connectionPool);
+        return TopMapper.getAllTops(connectionPool);
 
-        ArrayList<Top> tops = new ArrayList<>();
+        /*ArrayList<Top> tops = new ArrayList<>();
         tops.add(new Top(1, "ChocolateTest", 5));
         tops.add(new Top(2, "BlueberryTest", 5));
         tops.add(new Top(3, "RaspberryTest", 5));
         return tops;
+
+         */
     }
     // ************************************
 }

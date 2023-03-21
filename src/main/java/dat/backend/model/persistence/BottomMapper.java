@@ -48,7 +48,7 @@ public class BottomMapper {
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int idBottom = rs.getInt("idBottom");
                     String name = rs.getString("name");
                     int price = rs.getInt("price");

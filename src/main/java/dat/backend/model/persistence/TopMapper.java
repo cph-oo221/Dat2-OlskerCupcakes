@@ -11,36 +11,30 @@ import java.util.logging.Logger;
 
 public class TopMapper
 {
-    static Top getTop(String name, ConnectionPool connectionPool) throws DatabaseException
-    {
+    static Top getTop(String name, ConnectionPool connectionPool) throws DatabaseException, SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
 
         Top top = null;
 
         String sql = "SELECT * FROM Top WHERE name = ?";
 
-        try (Connection connection = connectionPool.getConnection())
-        {
-            try (PreparedStatement ps = connection.prepareStatement(sql))
-            {
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, name);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next())
-                {
+                if (rs.next()) {
                     int idTop = rs.getInt("idTop");
                     String Topname = rs.getString("name");
                     int price = rs.getInt("price");
                     top = new Top(idTop, name, price);
-                } else
-                {
+                } else {
                     throw new DatabaseException("No top is named that");
                 }
+            } catch (SQLException ex) {
+                throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
             }
-        } catch (SQLException ex)
-        {
-            throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
         }
-        return top;
+            return top;
     }
 
 
@@ -55,14 +49,14 @@ public class TopMapper
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    int idTop = rs.getInt("idTop");
-                    String name = rs.getString("name");
-                    int price = rs.getInt("price");
-                    top = new Top(idTop, name, price);
-                    topList.add(top);
+                while (rs.next()) {
+                        int idTop = rs.getInt("idTop");
+                        String name = rs.getString("name");
+                        int price = rs.getInt("price");
+                        top = new Top(idTop, name, price);
+                        topList.add(top);
+                    }
                 }
-            }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
         }
