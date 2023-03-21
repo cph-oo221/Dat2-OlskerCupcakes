@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.entities.Bottom;
 import dat.backend.model.entities.Top;
+import dat.backend.model.persistence.Facade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,8 +16,8 @@ public class Browse extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-       // ArrayList<Top> tops = Facade.getTops();
-       // ArrayList<Bottom> bottoms =  Facade.getBottoms();
+       ArrayList<Top> tops = Facade.getTops();
+       ArrayList<Bottom> bottoms =  Facade.getBottoms();
 
 
     }
