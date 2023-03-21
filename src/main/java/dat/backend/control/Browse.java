@@ -16,15 +16,17 @@ public class Browse extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-       ArrayList<Top> tops = Facade.getTops();
-       ArrayList<Bottom> bottoms =  Facade.getBottoms();
-
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        ArrayList<Top> tops = Facade.getTops();
+        ArrayList<Bottom> bottoms =  Facade.getBottoms();
 
+        request.getSession().setAttribute("tops", tops);
+        request.getSession().setAttribute("bottoms", bottoms);
+
+        request.getRequestDispatcher("browse.jsp").forward(request, response);
     }
 }
