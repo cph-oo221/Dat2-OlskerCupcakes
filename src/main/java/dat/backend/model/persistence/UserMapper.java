@@ -45,7 +45,7 @@ class UserMapper
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user = null;
-        String sql = "insert into user (email, password, role) values (?,?,?)";
+        String sql = "insert into User (email, password, role) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
