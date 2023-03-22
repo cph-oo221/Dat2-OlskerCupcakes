@@ -72,8 +72,7 @@ class UserMapper
                             throw new DatabaseException("No key found in resultset");
                         }
                     }
-                }
-                else
+                } else
                 {
                     throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");
                 }
@@ -85,6 +84,8 @@ class UserMapper
         }
         return user;
     }
+
+    
 
 
 }
