@@ -39,6 +39,9 @@ public class Login extends HttpServlet
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+
+
+            // TODO getServletContext().setAttribute("userList", Facade.getAllUsers(connectionPool)); // Make application scope userList
         try
         {
             User user = Facade.login(email, password, connectionPool);

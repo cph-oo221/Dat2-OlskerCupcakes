@@ -14,6 +14,13 @@
 
     <jsp:body>
 
+
+        <div class="mt-3">
+            <input type="submit" formaction="" formmethod="post" class="btn btn-secondary" value="View all Receipts">
+        </div>
+
+
+        <!--  TABLE FOR LIST OVER USERS   -->
         <style>
             table {
                 font-family: arial, sans-serif;
@@ -41,17 +48,18 @@
                     <th>Balance</th>
                     <th>Edit</th>
                 </tr>
-
+                <<c:forEach var="user" items="${applicationScope.userList}">
                 <tr>
-                    <td>oskar@gmail.com</td>
-                    <td>1234</td>
-                    <td>user</td>
-                    <td>100</td>
+                    <td>${user.username}</td>
+                    <td>${user.password}</td>
+                    <td>${user.role}</td>
+                    <td>${user.balance}</td>
 
                     <!-- TODO change to right value, formaction & formmethod   -->
-                    <input type="text" hidden name="Valg" value="${ChangeThis}">
+                    <input type="text" hidden name="Valg" value="${user.name}">
                     <td> <input type="submit" formaction="Admin" formmethod="post" class="btn btn-link" value="Edit"></td>
                 </tr>
+                </c:forEach>
             </table>
         </div>
 
