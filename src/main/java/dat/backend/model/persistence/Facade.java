@@ -23,9 +23,9 @@ public class Facade
         return UserMapper.createUser(username, password, role, connectionPool);
     }
 
-    public static User updateBalance(User user, int balance, ConnectionPool connectionPool) throws DatabaseException
+    public static void updateBalance(int idUser, int balance, ConnectionPool connectionPool) throws DatabaseException
     {
-        return UserMapper.updateBalance(user, balance, connectionPool);
+        UserMapper.updateBalance(idUser, balance, connectionPool);
     }
     // ************************************
 

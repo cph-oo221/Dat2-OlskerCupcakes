@@ -71,7 +71,7 @@ class UserMapper
         return user;
     }
 
-    static User updateBalance(User user, int balance ,ConnectionPool connectionPool)throws DatabaseException
+    static void updateBalance(int idUser, int balance ,ConnectionPool connectionPool)throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
@@ -82,30 +82,15 @@ class UserMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setInt(1, balance);
-                ps.setInt(2, user.getId()); // her skal sebs metode implementeres
-
+                ps.setInt(2, idUser); // her skal sebs metode implementeres
 
                 int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 1)
-                {
-                    //User gets a new balance
-                    user.setBalance(balance);
-                } else
-                {
-                    throw new DatabaseException("The user with email = " + user.getUsername() + " could not have new balance added into the database");
-                }
+
             }
-        }
-        catch (SQLException ex)
+        } catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Could not insert balance into database");
         }
 
-
-        return user;
     }
-
-
-
-
 }
