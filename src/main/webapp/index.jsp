@@ -14,33 +14,16 @@
 
     <jsp:body>
 
+        <p>Startcode for 2nd semester </p>
+
         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
         </c:if>
 
-        <div class="row mt-3">
-
-            <c:if test="${sessionScope.user != null}">
-                <div class="col text-center">
-                    <p>Here you can see our cupcakes</p>
-                    <a class="btn btn-secondary fw-bold" href="${pageContext.request.contextPath}/browse">Cupcakes</a>
-                </div>
-            </c:if>
-
-            <c:if test="${sessionScope.user == null}">
-                <div class="col text-center">
-                    <p>Here you can see our cupcakes</p>
-                    <a class="btn btn-secondary fw-bold" href="${pageContext.request.contextPath}/browse">Cupcakes</a>
-                </div>
-            </c:if>
-
-            <div class="col text-center">
-                <c:if test="${sessionScope.user == null}">
-                    <p>You log in here:</p>
-                    <a class="btn btn-secondary fw-bold" href="login.jsp">Login</a>
-                </c:if>
-            </div>
-        </div>
+        <c:if test="${sessionScope.user == null}">
+            <p>You are not logged in yet. You can do it here: <a
+                    href="login.jsp">Login</a></p>
+        </c:if>
 
     </jsp:body>
 
