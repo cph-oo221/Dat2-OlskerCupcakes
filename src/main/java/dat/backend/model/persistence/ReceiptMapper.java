@@ -62,7 +62,7 @@ public class ReceiptMapper {
         return receiptList;
     }
 
-    static void createReceipt(int iduser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception {
+    static int createReceipt(int iduser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception {
         Logger.getLogger("web").log(Level.INFO, "");
         Receipt receipt;
         String sql = "insert into receipt (iduser) values (?)";
@@ -91,6 +91,7 @@ public class ReceiptMapper {
                                 } catch (SQLException e) {
                                     throw new SQLException("The orderItem with the top " + orderItem.getTop().getIdTop() + " and bottom " + orderItem.getBottom().getIdBottom() + " could not be added");
                                 }
+                                return idReceipt;
                             }
                         } else {
                             throw new Exception("The orderItemList is empty");
@@ -104,5 +105,6 @@ public class ReceiptMapper {
                 throw new DatabaseException(ex, "Could not insert top into database");
             }
         }
+        return 0;
     }
 }
