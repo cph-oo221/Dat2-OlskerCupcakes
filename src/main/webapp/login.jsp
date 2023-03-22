@@ -20,8 +20,8 @@
 
         <div class="text-center mt-5">
             <form action="login" method="post">
-                <label for="username" hidden>Username: </label>
-                <input type="text" id="username" name="username" placeholder="Email"/>
+                <label for="email" hidden>Username: </label>
+                <input type="text" id="email" name="email" placeholder="Email"/>
                 <br/>
                 <label for="password" hidden>Password: </label><br/>
                 <input type="password" id="password" name="password" placeholder="Password"/>

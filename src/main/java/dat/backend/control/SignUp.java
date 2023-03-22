@@ -34,7 +34,7 @@ public class SignUp extends HttpServlet
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null);
-        String email = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
         String role = "user";
 
