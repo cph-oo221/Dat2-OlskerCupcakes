@@ -1,6 +1,5 @@
 package dat.backend.model.persistence;
 
-import com.mysql.cj.protocol.Resultset;
 import dat.backend.model.entities.OrderItem;
 import dat.backend.model.exceptions.DatabaseException;
 

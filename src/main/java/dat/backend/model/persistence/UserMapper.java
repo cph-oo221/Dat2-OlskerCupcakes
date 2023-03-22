@@ -28,7 +28,8 @@ class UserMapper
                 {
                     String role = rs.getString("role");
                     int balance = rs.getInt("balance");
-                    user = new User(email, password, role, balance);
+                    int iduser = rs.getInt("iduser");
+                    user = new User(iduser, email, password, role, balance);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -56,7 +57,13 @@ class UserMapper
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(email, password, role, 0);
+                    ps.close();
+                    sql = "SELECT LAST_INSERT_ID()";
+                    try(PreparedStatement psid = connection.prepareStatement(sql)) {
+                        ResultSet rs = psid.executeQuery();
+                        int iduser = rs.getInt("LAST_INSERT_ID()");
+                        user = new User(iduser, email, password, role, 0);
+                    }
                 } else
                 {
                     throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");
