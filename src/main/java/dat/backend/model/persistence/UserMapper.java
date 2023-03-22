@@ -71,28 +71,28 @@ class UserMapper
         return user;
     }
 
-    static User updateBalance(String email, int balance ,ConnectionPool connectionPool)throws DatabaseException
+    static User updateBalance(User user, int balance ,ConnectionPool connectionPool)throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        User user = null; // her skal jeg have den user der er knyttet til email.
-
-        String sql = "insert into user (balance) values (?)";
+        String sql = "update user set balance = ? where idUser = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
+                ps.setInt(1, balance);
+                ps.setInt(2, user.getId()); // her skal sebs metode implementeres
 
-                ps.setInt(2, balance);
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    //her skal user have ny balance 
+                    //User gets a new balance
+                    user.setBalance(balance);
                 } else
                 {
-                    throw new DatabaseException("The user with email = " + email + " could not have new balance added into the database");
+                    throw new DatabaseException("The user with email = " + user.getUsername() + " could not have new balance added into the database");
                 }
             }
         }
