@@ -3,6 +3,7 @@ package dat.backend.model.persistence;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,6 +70,42 @@ class UserMapper
         }
         return user;
     }
+
+    static User updateBalance(String email, int balance ,ConnectionPool connectionPool)throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        User user = null; // her skal jeg have den user der er knyttet til email.
+
+        String sql = "insert into user (balance) values (?)";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+
+                ps.setInt(2, balance);
+
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1)
+                {
+                    //her skal user have ny balance 
+                } else
+                {
+                    throw new DatabaseException("The user with email = " + email + " could not have new balance added into the database");
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Could not insert balance into database");
+        }
+
+
+        return user;
+    }
+
+
 
 
 }
