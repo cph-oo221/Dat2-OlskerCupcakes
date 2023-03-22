@@ -79,4 +79,14 @@ public class User
                 ", rolle='" + role + '\'' +
                 '}';
     }
+
+    public int getId()
+    {
+        return -1;
+    }
+
+    public void setBalance(int balance)
+    {
+        this.balance = balance;
+    }
 }

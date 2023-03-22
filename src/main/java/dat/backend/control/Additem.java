@@ -5,6 +5,7 @@ import dat.backend.model.entities.Bottom;
 import dat.backend.model.entities.OrderItem;
 import dat.backend.model.entities.Top;
 import dat.backend.model.entities.User;
+import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
 
@@ -12,6 +13,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "Additem", value = "/additem")
@@ -32,8 +34,22 @@ public class Additem extends HttpServlet
         int idTop = Integer.parseInt(request.getParameter("idTop"));
         int amount = Integer.parseInt(request.getParameter("amount"));
 
-        Bottom bottom = Facade.getBottomById(idBottom, connectionPool);
-        Top top = Facade.getTopById(idTop, connectionPool);
+        Bottom bottom = null;
+        try {
+            bottom = Facade.getBottomById(idBottom, connectionPool);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
+        Top top = null;
+        try {
+            top = Facade.getTopById(idTop, connectionPool);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
 
         OrderItem orderItem = new OrderItem(bottom, top, amount);
 

@@ -1,10 +1,13 @@
 package dat.backend.model.persistence;
 
 
-import dat.backend.model.entities.*;
+import dat.backend.model.entities.Bottom;
+import dat.backend.model.entities.Top;
+import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import org.junit.jupiter.api.Order;
 
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +26,9 @@ public class Facade
         return UserMapper.createUser(username, password, role, connectionPool);
     }
 
-    public static void createReceipt(int idUser, List<OrderItem> orderItemList, ConnectionPool connectionPool)
+    public static void updateBalance(int idUser, int balance, ConnectionPool connectionPool) throws DatabaseException
     {
-
+        UserMapper.updateBalance(idUser, balance, connectionPool);
     }
     // ************************************
 
@@ -42,11 +45,10 @@ public class Facade
 
     }
 
-    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool)
-    {
-        // TODO: TESTING METHOD, IMPLEMENT DB
+    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws SQLException, DatabaseException {
+        return BottomMapper.getBottomById(idBottom,connectionPool);
 
-        return new Bottom(1, "Chocolate", 5);
+       // return new Bottom(1, "Chocolate", 5);
     }
     // ************************************
 
@@ -63,11 +65,10 @@ public class Facade
         return tops;*/
     }
 
-    public static Top getTopById(int idTop, ConnectionPool connectionPool)
-    {
-        // TODO: TESTING METHOD, IMPLEMENT DB
+    public static Top getTopById(int idTop, ConnectionPool connectionPool) throws SQLException, DatabaseException {
+        return TopMapper.getTopById(idTop,connectionPool);
 
-        return new Top(1, "Chocolate", 5);
+       // return new Top(1, "Chocolate", 5);
     }
     // ************************************
 

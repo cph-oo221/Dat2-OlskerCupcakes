@@ -8,7 +8,7 @@ public class Receipt {
     private Timestamp timeOfOrder;
     private Boolean completed;
 
-    public Receipt(int iduser, Timestamp timeOfOrder, Boolean completed) {
+    public Receipt(int idReceipt, int iduser, Timestamp timeOfOrder, Boolean completed) {
         this.iduser = iduser;
         this.timeOfOrder = timeOfOrder;
         this.completed = completed;
