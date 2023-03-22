@@ -1,5 +1,6 @@
 package dat.backend.model.persistence;
 
+import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Top;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
@@ -16,7 +17,7 @@ public class TopMapper
 
         Top top = null;
 
-        String sql = "SELECT * FROM Top WHERE name = ?";
+        String sql = "SELECT * FROM top WHERE name = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -44,7 +45,7 @@ public class TopMapper
 
         Top top = null;
 
-        String sql = "SELECT * FROM Top";
+        String sql = "SELECT * FROM top";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

@@ -15,7 +15,7 @@ public class BottomMapper {
 
         Bottom bottom = null;
 
-        String sql = "SELECT * FROM Bottom WHERE name = ?";
+        String sql = "SELECT * FROM bottom WHERE name = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -43,7 +43,7 @@ public class BottomMapper {
 
         Bottom bottom;
 
-        String sql = "SELECT * FROM Bottom;";
+        String sql = "SELECT * FROM bottom;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
