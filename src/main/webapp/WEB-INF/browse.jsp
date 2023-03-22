@@ -72,8 +72,12 @@
                     </div>
 
                     <div class="col-2">
-                        <br><br><br><br><br>
-                        <button type="submit">Choose</button>
+                        <br><br>
+                        <td>Total: ${sessionScope.totalSum}</td>
+                        <br><br><br><br>
+                        <button type="submit">Add</button>
+                        <br><br>
+                        <button type="submit" formaction="savereceipt">Save and continue</button>
                     </div>
                 </div>
                 <br><br>
