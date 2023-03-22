@@ -109,13 +109,13 @@ public class ReceiptMapper {
                                     int idTop = orderItem.getTop().getIdTop();
                                     int idBottom = orderItem.getBottom().getIdBottom();
                                     int amount = orderItem.getAmount();
-                                    sql = "INSERT INTO orders (idReceipt, idTop, idBottom, amount) values (?,?,?,?)";
-                                    try (PreparedStatement psInsertOrders = connection.prepareStatement(sql)) {
-                                        psInsertOrders.setInt(1, idReceipt);
-                                        psInsertOrders.setInt(2, idTop);
-                                        psInsertOrders.setInt(3, idBottom);
-                                        psInsertOrders.setInt(4, amount);
-                                        psInsertOrders.executeUpdate();
+                                    sql = "INSERT INTO order (idReceipt, idTop, idBottom, amount) values (?,?,?,?)";
+                                    try (PreparedStatement psInsertOrder = connection.prepareStatement(sql)) {
+                                        psInsertOrder.setInt(1, idReceipt);
+                                        psInsertOrder.setInt(2, idTop);
+                                        psInsertOrder.setInt(3, idBottom);
+                                        psInsertOrder.setInt(4, amount);
+                                        psInsertOrder.executeUpdate();
                                     } catch (SQLException e) {
                                         throw new SQLException("The orderItem with the top " + orderItem.getTop().getIdTop() + " and bottom " + orderItem.getBottom().getIdBottom() + " could not be added");
                                     }
