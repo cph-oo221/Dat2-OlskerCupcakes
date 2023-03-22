@@ -25,7 +25,7 @@ public class TopMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     int idTop = rs.getInt("idTop");
-                    String Topname = rs.getString("name");
+                    String topName = rs.getString("name");
                     int price = rs.getInt("price");
                     top = new Top(idTop, name, price);
                 } else {
@@ -36,6 +36,31 @@ public class TopMapper
             }
         }
             return top;
+    }
+
+    static Top getTopById(int idTop, ConnectionPool connectionPool) throws DatabaseException, SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        Top top = null;
+
+        String sql = "SELECT * FROM top WHERE topid = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, idTop);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    String topName = rs.getString("name");
+                    int price = rs.getInt("price");
+                    top = new Top(idTop, topName, price);
+                } else {
+                    throw new DatabaseException("No top is named that");
+                }
+            } catch (SQLException ex) {
+                throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
+            }
+        }
+        return top;
     }
 
 

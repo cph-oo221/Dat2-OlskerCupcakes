@@ -36,6 +36,31 @@ public class BottomMapper {
         return bottom;
     }
 
+    static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws DatabaseException, SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        Bottom bottom = null;
+
+        String sql = "SELECT * FROM bottom WHERE bottompid = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, idBottom);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    String topName = rs.getString("name");
+                    int price = rs.getInt("price");
+                    bottom = new Bottom(idBottom, topName, price);
+                } else {
+                    throw new DatabaseException("No Bottom is named that");
+                }
+            } catch (SQLException ex) {
+                throw new DatabaseException(ex, "Error getting Bottom. Something went wrong with the database");
+            }
+        }
+        return bottom;
+    }
+
 
     static ArrayList<Bottom> getAllBottoms(ConnectionPool connectionPool) throws DatabaseException {
         ArrayList<Bottom> bottomList = new ArrayList<>();
