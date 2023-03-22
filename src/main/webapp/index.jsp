@@ -5,11 +5,11 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Welcome to Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        Welcome to the frontpage
+        Welcome to Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:body>
