@@ -8,13 +8,15 @@ public class User
     private String password;
     private String role;
     private int balance;
+    private int idUser;
 
-    public User(int iduser, String username, String password, String role, int balance)
+    public User(int idUser, String username, String password, String role, int balance)
     {
         this.email = username;
         this.password = password;
         this.role = role;
         this.balance = balance;
+        this.idUser = idUser;
     }
 
     public String getUsername()
@@ -35,6 +37,11 @@ public class User
     public void setPassword(String password)
     {
         this.password = password;
+    }
+
+    public int getIdUser()
+    {
+        return idUser;
     }
 
     public String getRole()
@@ -71,5 +78,15 @@ public class User
                 ", kodeord='" + password + '\'' +
                 ", rolle='" + role + '\'' +
                 '}';
+    }
+
+    public int getId()
+    {
+        return -1;
+    }
+
+    public void setBalance(int balance)
+    {
+        this.balance = balance;
     }
 }
