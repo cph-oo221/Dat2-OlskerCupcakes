@@ -96,7 +96,7 @@ class UserMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ps.setInt(1, balance);
-                ps.setInt(2, idUser); 
+                ps.setInt(2, idUser);
 
                 int rowsAffected = ps.executeUpdate();
 
