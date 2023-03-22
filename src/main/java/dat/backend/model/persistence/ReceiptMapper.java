@@ -1,6 +1,7 @@
 package dat.backend.model.persistence;
 
 import dat.backend.model.entities.OrderItem;
+import dat.backend.model.entities.Receipt;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.*;

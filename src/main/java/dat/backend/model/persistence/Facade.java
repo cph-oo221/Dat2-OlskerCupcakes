@@ -1,12 +1,12 @@
 package dat.backend.model.persistence;
 
 
-import dat.backend.model.entities.Bottom;
-import dat.backend.model.entities.Top;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
+import org.junit.jupiter.api.Order;
 
 import java.util.ArrayList;
+import java.util.List;
 
 // Behold! the eternal gate of all data!
 
@@ -21,6 +21,11 @@ public class Facade
     public static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException
     {
         return UserMapper.createUser(username, password, role, connectionPool);
+    }
+
+    public static void createReceipt(int idUser, List<OrderItem> orderItemList, ConnectionPool connectionPool)
+    {
+
     }
     // ************************************
 
@@ -63,6 +68,23 @@ public class Facade
         // TODO: TESTING METHOD, IMPLEMENT DB
 
         return new Top(1, "Chocolate", 5);
+    }
+    // ************************************
+
+    // Receipt ****************************
+
+    public static Receipt getReceiptById(int idReceipt, ConnectionPool connectionPool)
+    {
+        // TODO: TESTING METHOD, IMPLEMENT DB
+
+        return new Receipt(4, false);
+    }
+
+    public static List<OrderItem> getOrderByReceiptId(int dReceipt, ConnectionPool connectionPool)
+    {
+        // TODO: TESTING METHOD, IMPLEMENT DB
+
+        return null;
     }
     // ************************************
 }
