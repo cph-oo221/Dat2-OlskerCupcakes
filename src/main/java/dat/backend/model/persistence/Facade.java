@@ -6,6 +6,7 @@ import dat.backend.model.entities.Top;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -38,11 +39,10 @@ public class Facade
 
     }
 
-    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool)
-    {
-        // TODO: TESTING METHOD, IMPLEMENT DB
+    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws SQLException, DatabaseException {
+        return BottomMapper.getBottomById(idBottom,connectionPool);
 
-        return new Bottom(1, "Chocolate", 5);
+       // return new Bottom(1, "Chocolate", 5);
     }
     // ************************************
     // Top ********************************
@@ -57,11 +57,10 @@ public class Facade
         return tops;*/
     }
 
-    public static Top getTopById(int idTop, ConnectionPool connectionPool)
-    {
-        // TODO: TESTING METHOD, IMPLEMENT DB
+    public static Top getTopById(int idTop, ConnectionPool connectionPool) throws SQLException, DatabaseException {
+        return TopMapper.getTopById(idTop,connectionPool);
 
-        return new Top(1, "Chocolate", 5);
+       // return new Top(1, "Chocolate", 5);
     }
     // ************************************
 }

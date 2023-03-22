@@ -41,16 +41,16 @@ public class BottomMapper {
 
         Bottom bottom = null;
 
-        String sql = "SELECT * FROM bottom WHERE bottompid = ?";
+        String sql = "SELECT * FROM bottom WHERE idBottom = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, idBottom);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    String topName = rs.getString("name");
+                    String bottomName = rs.getString("name");
                     int price = rs.getInt("price");
-                    bottom = new Bottom(idBottom, topName, price);
+                    bottom = new Bottom(idBottom, bottomName, price);
                 } else {
                     throw new DatabaseException("No Bottom is named that");
                 }

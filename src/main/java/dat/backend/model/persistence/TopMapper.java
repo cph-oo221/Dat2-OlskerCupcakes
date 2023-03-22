@@ -43,7 +43,7 @@ public class TopMapper
 
         Top top = null;
 
-        String sql = "SELECT * FROM top WHERE topid = ?";
+        String sql = "SELECT * FROM top WHERE idTop = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
