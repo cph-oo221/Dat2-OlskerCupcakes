@@ -97,7 +97,7 @@ class UserMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ResultSet rs = ps.executeQuery();
-                if (rs.next())
+                while(rs.next())
                 {
                     String email = rs.getString("email");
                     String password = rs.getString("password");
@@ -106,9 +106,6 @@ class UserMapper
                     int iduser = rs.getInt("iduser");
                     User user = new User(iduser, email, password, role, balance);
                     userList.add(user);
-                } else
-                {
-                    throw new DatabaseException("Wrong username or password");
                 }
             }
         } catch (SQLException ex)

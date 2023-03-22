@@ -20,21 +20,24 @@
         </div>
 
 
-        <!--  TABLE FOR LIST OVER USERS   -->
+        <!-- TABLE FOR LIST OVER USERS -->
         <style>
-            table {
+            table
+            {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
             }
 
-            td, th {
+            td, th
+            {
                 /*border: 1px solid #dddddd;*/
                 text-align: left;
                 padding: 8px;
             }
 
-            tr:nth-child(even) {
+            tr:nth-child(even)
+            {
                 background-color: #dddddd;
             }
         </style>
@@ -48,18 +51,24 @@
                     <th>Balance</th>
                     <th>Edit</th>
                 </tr>
-                <<c:forEach var="user" items="${applicationScope.userList}">
-                <tr>
-                    <td>${user.username}</td>
-                    <td>${user.password}</td>
-                    <td>${user.role}</td>
-                    <td>${user.balance}</td>
 
-                    <!-- TODO change to right value, formaction & formmethod   -->
-                    <input type="text" hidden name="Valg" value="${user.name}">
-                    <td> <input type="submit" formaction="Admin" formmethod="post" class="btn btn-link" value="Edit"></td>
-                </tr>
+                <c:forEach var="user" items="${requestScope.userList}">
+                    <tr>
+                        <td>${user.username}</td>
+                        <td>${user.password}</td>
+                        <td>${user.role}</td>
+                        <td>${user.balance}</td>
+
+                        <td>
+                            <form action="editUser" method="post">
+                                <input type="hidden" name="email" value="${user.username}">
+                                <input type="submit" class="btn btn-secondary" value="Edit">
+                            </form>
+                        </td>
+                    </tr>
                 </c:forEach>
+
+
             </table>
         </div>
 
