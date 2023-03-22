@@ -6,6 +6,7 @@ import dat.backend.model.entities.Top;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 // Behold! the eternal gate of all data!
@@ -49,8 +50,6 @@ public class Facade
         return new Bottom(1, "Chocolate", 5);
     }
     // ************************************
-
-
     // Top ********************************
     public static ArrayList<Top> getTops(ConnectionPool connectionPool) throws DatabaseException {
 
