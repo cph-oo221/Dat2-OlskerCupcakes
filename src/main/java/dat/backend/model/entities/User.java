@@ -1,7 +1,5 @@
 package dat.backend.model.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class User
@@ -11,7 +9,7 @@ public class User
     private String role;
     private int balance;
 
-    public User(String username, String password, String role, int balance)
+    public User(int iduser, String username, String password, String role, int balance)
     {
         this.email = username;
         this.password = password;

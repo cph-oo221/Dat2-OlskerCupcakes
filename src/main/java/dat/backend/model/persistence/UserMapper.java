@@ -28,7 +28,8 @@ class UserMapper
                 {
                     String role = rs.getString("role");
                     int balance = rs.getInt("balance");
-                    user = new User(email, password, role, balance);
+                    int iduser = rs.getInt("iduser");
+                    user = new User(iduser, email, password, role, balance);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -44,7 +45,7 @@ class UserMapper
     static User createUser(String email, String password, String role, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
-        User user;
+        User user = null;
         String sql = "insert into user (email, password, role) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
@@ -56,7 +57,21 @@ class UserMapper
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(email, password, role, 0);
+                    ps.close();
+                    sql = "SELECT LAST_INSERT_ID();";
+                    try(PreparedStatement psid = connection.prepareStatement(sql))
+                    {
+                        ResultSet rs = psid.executeQuery();
+                        if (rs.next())
+                        {
+                            int iduser = rs.getInt("LAST_INSERT_ID()");
+                            user = new User(iduser, email, password, role, 0);
+                        }
+                        else
+                        {
+                            throw new DatabaseException("No key found in resultset");
+                        }
+                    }
                 } else
                 {
                     throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");
