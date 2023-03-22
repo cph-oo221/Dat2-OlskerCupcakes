@@ -37,12 +37,17 @@ public class Additem extends HttpServlet
 
         OrderItem orderItem = new OrderItem(bottom, top, amount);
 
-//        User user = (User) request.getSession().getAttribute("user");
-//        user.addOrderItem(orderItem);
-
         List<OrderItem> orderItemList = (List<OrderItem>) request.getSession().getAttribute("orderItemList");
         orderItemList.add(orderItem);
 
+        int totalSum = 0;
+        for (OrderItem item: orderItemList)
+        {
+            int itemSum = item.getBottom().getPrice() + item.getTop().getPrice();
+            totalSum += itemSum * item.getAmount();
+        }
+
+        request.getSession().setAttribute("totalSum", totalSum);
         request.getRequestDispatcher("WEB-INF/browse.jsp").forward(request, response);
     }
 }
