@@ -52,7 +52,7 @@
                     <th>Edit</th>
                 </tr>
 
-                <c:forEach var="user" items="${requestScope.userList}">
+                <c:forEach var="user" items="${sessionScope.userList}">
                     <tr>
                         <td>${user.username}</td>
                         <td>${user.password}</td>
@@ -60,14 +60,14 @@
                         <td>${user.balance}</td>
 
                         <td>
-                            <form action="editUser" method="post">
-                                <input type="hidden" name="email" value="${user.username}">
+                            <form action="EditUser" method="post">
+                                <input type="text" hidden name="Email" value="${user.username}">
+                                <input type="text" hidden name="Balance" value="${user.balance}">
                                 <input type="submit" class="btn btn-secondary" value="Edit">
                             </form>
                         </td>
                     </tr>
                 </c:forEach>
-
 
             </table>
         </div>
