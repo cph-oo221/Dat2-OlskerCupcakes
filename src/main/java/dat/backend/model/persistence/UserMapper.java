@@ -114,4 +114,26 @@ class UserMapper
         }
         return userList;
     }
+    static void updateBalance(int idUser, int balance ,ConnectionPool connectionPool)throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "update user set balance = ? where idUser = ?";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, balance);
+                ps.setInt(2, idUser);
+
+                int rowsAffected = ps.executeUpdate();
+
+            }
+        } catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Could not insert balance into database");
+        }
+
+    }
 }
