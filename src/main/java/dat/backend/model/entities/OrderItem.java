@@ -32,6 +32,6 @@ public class OrderItem
     @Override
     public String toString()
     {
-        return bottom.getName() + " + " + top.getName() + " Amount: " + amount;
+        return bottom.getName() + " + " + top.getName() + " x " + amount;
     }
 }

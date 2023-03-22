@@ -1,9 +1,7 @@
 package dat.backend.model.persistence;
 
 
-import dat.backend.model.entities.Bottom;
-import dat.backend.model.entities.Top;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.SQLException;
@@ -72,8 +70,8 @@ public class Facade
     }
     // ************************************
 
-    // Receipt ****************************
 
+    // Receipt ****************************
     public static Receipt getReceiptById(int idReceipt, ConnectionPool connectionPool)
     {
         // TODO: TESTING METHOD, IMPLEMENT DB
@@ -81,11 +79,16 @@ public class Facade
         return new Receipt(4, false);
     }
 
-    public static List<OrderItem> getOrderByReceiptId(int dReceipt, ConnectionPool connectionPool)
+    public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool)
     {
         // TODO: TESTING METHOD, IMPLEMENT DB
 
         return null;
+    }
+
+    public static int createReceipt(int idUser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception
+    {
+        return ReceiptMapper.createReceipt(idUser, orderItemList, connectionPool);
     }
     // ************************************
 }

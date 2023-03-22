@@ -142,7 +142,7 @@ public class ReceiptMapper {
 
         Receipt receipt = null;
 
-        String sql = "UPDATE receipt SET completed = (completed-1) WHERE idReceipt = ?";
+        String sql = "UPDATE receipt SET complete = (complete - 1) WHERE idReceipt = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

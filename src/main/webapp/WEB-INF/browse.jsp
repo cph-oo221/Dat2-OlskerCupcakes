@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="col">
-                        <h3> x </h3>
+                        <h3>Amount</h3>
                         <input type="number" name="amount" value="1" min="1">
                     </div>
                     <div class="col">

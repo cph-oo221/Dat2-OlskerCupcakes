@@ -33,14 +33,23 @@ public class Savereceipt extends HttpServlet
         if (user != null)
         {
             List<OrderItem> orderItemList = (List<OrderItem>) request.getSession().getAttribute("orderItemList");
+            int idReceipt;
 
-            // int idReceipt = Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
-            // orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
+            try
+            {
+                idReceipt = Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
+                // TODO: GET FROM DB
+                // orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
 
-            request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
-        }
+                request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
+            }
 
-        else
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+        } else
         {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

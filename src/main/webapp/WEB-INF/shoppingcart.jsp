@@ -15,7 +15,10 @@
 
     <jsp:body>
 
-        <div class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
                 <table>
                         <c:forEach var="item" items="${sessionScope.orderItemList}">
                     <tr>
@@ -23,6 +26,9 @@
                     </tr>
                         </c:forEach>
                 </table>
+                </div>
+                <div class="col"></div>
+            </div>
         </div>
 
     </jsp:body>
