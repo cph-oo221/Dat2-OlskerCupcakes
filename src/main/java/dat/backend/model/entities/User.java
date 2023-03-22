@@ -80,7 +80,7 @@ public class User
         return -1;
     }
 
-    public int setBalance(int balance)
+    public void setBalance(int balance)
     {
         this.balance = balance;
     }
