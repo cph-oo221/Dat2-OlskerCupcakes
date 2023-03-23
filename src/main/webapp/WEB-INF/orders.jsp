@@ -19,7 +19,6 @@
                 <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
             </form>
         </div>
-
         
         <style>
             table
