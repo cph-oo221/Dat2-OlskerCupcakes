@@ -18,14 +18,14 @@ import java.util.List;
 @WebServlet(name = "Browse", value = "/browse")
 public class Browse extends HttpServlet
 {
-    List<OrderItem> orderItemList = new ArrayList<>();
     ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
+    static List<OrderItem> orderItemList = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        ArrayList<Top> tops = null;
-        ArrayList<Bottom> bottoms = null;
+        ArrayList<Top> tops = new ArrayList<>();
+        ArrayList<Bottom> bottoms = new ArrayList<>();
         try {
             tops = Facade.getTops(connectionPool);
             bottoms =  Facade.getBottoms(connectionPool);
@@ -44,5 +44,10 @@ public class Browse extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 
+    }
+
+    public static void setOrderItemList(List<OrderItem> orderItemListtemp)
+    {
+        orderItemList = orderItemListtemp;
     }
 }
