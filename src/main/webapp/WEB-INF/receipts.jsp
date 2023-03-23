@@ -13,6 +13,13 @@
     </jsp:attribute>
 
     <jsp:body>
+
+        <div class="text-start">
+            <form action="AdminPanel" method="post">
+                <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
+            </form>
+        </div>
+
         <style>
             table
             {

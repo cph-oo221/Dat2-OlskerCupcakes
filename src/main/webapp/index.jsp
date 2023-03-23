@@ -18,6 +18,14 @@
 
         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
+
+            <c:if test="${sessionScope.user.role.equalsIgnoreCase('admin')}">
+                <div class="text-start">
+                    <form action="AdminPanel" method="post">
+                        <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
+                    </form>
+                </div>
+            </c:if>
         </c:if>
 
         <c:if test="${sessionScope.user == null}">
