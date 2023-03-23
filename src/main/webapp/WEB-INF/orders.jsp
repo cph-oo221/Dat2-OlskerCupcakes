@@ -13,7 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
-
+        <p>${requestScope.idReceipt}</p>
 
     </jsp:body>
 </t:pagetemplate>

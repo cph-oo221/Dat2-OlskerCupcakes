@@ -17,6 +17,10 @@ public class Orders extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        int idReceipt = Integer.parseInt(getInitParameter("idReceipt"));
+
+        request.setAttribute("idReceipt", idReceipt);
+
         request.getRequestDispatcher("WEB-INF/orders.jsp").forward(request, response);
     }
 }

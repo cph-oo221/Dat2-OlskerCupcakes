@@ -47,13 +47,14 @@
                 <c:forEach var="receipt" items="${requestScope.receipts}">
                     <tr>
                         <td>${receipt.idReceipt}</td>
-                        <td>${receipt.getiduser}</td> <!-- maybe change to getiduser() -->
-                        <td>${receipt.timeOfOrder}</td>
+                        <td>${receipt.getiduser()}</td>
+                        <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
                         <td>${receipt.completed}</td>
 
+
                         <td>
-                            <form action="" method="post">
-                                <input type="text" hidden name="id" value="${receipt.idReceipt}">
+                            <form action="Orders" method="post">
+                                <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
                                 <input type="submit" class="btn btn-secondary" value="Get Order Items">
                             </form>
                         </td>
@@ -62,6 +63,7 @@
 
             </table>
         </div>
+
 
     </jsp:body>
 </t:pagetemplate>

@@ -31,7 +31,7 @@ public class Receipt {
         return timeOfOrder;
     }
 
-    public Boolean getCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
 
@@ -54,11 +54,13 @@ public class Receipt {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Receipt{" +
                 "iduser=" + iduser +
                 ", timeOfOrder=" + timeOfOrder +
                 ", completed=" + completed +
+                ", idReceipt=" + idReceipt +
                 '}';
     }
 }
