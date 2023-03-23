@@ -11,22 +11,27 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class OrderMapper {
-    static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool) throws DatabaseException, SQLException {
+public class OrderMapper
+{
+    static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool) throws DatabaseException, SQLException
+    {
         Logger.getLogger("web").log(Level.INFO, "");
 
         List<OrderItem> orderItemList = new ArrayList<>();
 
         String sql = "SELECT idTop, idBottom, amount FROM order WHERE idReceipt = ?";
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
                 ps.setInt(1, idReceipt);
                 ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
+                while (rs.next())
+                {
                     int idTop = rs.getInt("idTop");
                     int idBottom = rs.getInt("idBottom");
-                    int amount= rs.getInt("amount");
+                    int amount = rs.getInt("amount");
                     Top top = Facade.getTopById(idTop, connectionPool);
                     Bottom bottom = Facade.getBottomById(idTop, connectionPool);
                     OrderItem orderItem = new OrderItem(bottom, top, amount);
@@ -34,7 +39,9 @@ public class OrderMapper {
                 }
                 return orderItemList;
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
         }
     }
