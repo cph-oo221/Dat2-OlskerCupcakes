@@ -37,7 +37,8 @@ class UserMapper
                     throw new DatabaseException("Wrong username or password");
                 }
             }
-        } catch (SQLException ex)
+        }
+        catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error logging in. Something went wrong with the database");
         }
@@ -61,15 +62,14 @@ class UserMapper
                 {
                     ps.close();
                     sql = "SELECT LAST_INSERT_ID();";
-                    try(PreparedStatement psid = connection.prepareStatement(sql))
+                    try (PreparedStatement psid = connection.prepareStatement(sql))
                     {
                         ResultSet rs = psid.executeQuery();
                         if (rs.next())
                         {
                             int iduser = rs.getInt("LAST_INSERT_ID()");
                             user = new User(iduser, email, password, role, 0);
-                        }
-                        else
+                        } else
                         {
                             throw new DatabaseException("No key found in resultset");
                         }
@@ -97,7 +97,7 @@ class UserMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ResultSet rs = ps.executeQuery();
-                while(rs.next())
+                while (rs.next())
                 {
                     String email = rs.getString("email");
                     String password = rs.getString("password");
@@ -108,13 +108,15 @@ class UserMapper
                     userList.add(user);
                 }
             }
-        } catch (SQLException ex)
+        }
+        catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error logging in. Something went wrong with the database");
         }
         return userList;
     }
-    static void updateBalance(int idUser, int balance ,ConnectionPool connectionPool)throws DatabaseException
+
+    static void updateBalance(int idUser, int balance, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
@@ -130,10 +132,59 @@ class UserMapper
                 int rowsAffected = ps.executeUpdate();
 
             }
-        } catch (SQLException ex)
+        }
+        catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Could not insert balance into database");
         }
-
     }
+
+    static boolean purchase(int idUser, int price, ConnectionPool connectionPool)
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "SELECT balance FROM user WHERE idUser = ?";
+        int balance = -1;
+        boolean couldAfford;
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, idUser);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next())
+                {
+                    balance = rs.getInt("balance");
+                }
+            }
+            catch (SQLException throwables)
+            {
+                throwables.printStackTrace();
+            }
+            if (balance > -1)
+            {
+                if (price <= balance)
+                {
+                    int newBalance = balance - price;
+                    updateBalance(idUser, newBalance, connectionPool);
+                    return couldAfford = true;
+                } else
+                {
+                    return couldAfford = false;
+                }
+            } else
+            {
+                throw new DatabaseException("Couldn't get balance from database");
+            }
+
+        }
+        catch (DatabaseException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return couldAfford = false; //Should never happen / You fucked up biiig
+    }
+
 }

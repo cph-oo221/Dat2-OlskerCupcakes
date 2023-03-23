@@ -5,7 +5,6 @@ import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,5 +104,23 @@ public class Facade
     public static List<Receipt> getAllReceipts(ConnectionPool connectionPool) throws DatabaseException
     {
         return ReceiptMapper.getAllReceipts(connectionPool);
+    }
+
+    public static boolean purchase(int idUser , int idReceipt , int price , ConnectionPool connectionPool)
+    {
+        boolean couldAfford = UserMapper.purchase(idUser , price , connectionPool);
+        if(!couldAfford)
+        {
+            return couldAfford;
+        }
+            try
+            {
+                ReceiptMapper.toggleReceipt(idReceipt, connectionPool);
+            }
+            catch (DatabaseException e)
+            {
+                e.printStackTrace();
+            }
+        return true;
     }
 }
