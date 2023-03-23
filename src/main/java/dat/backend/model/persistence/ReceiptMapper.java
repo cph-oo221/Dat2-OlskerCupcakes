@@ -31,8 +31,8 @@ public class ReceiptMapper
                 {
                     int idReceipt = rs.getInt("idReceipt");
                     Timestamp timeOfOrder = rs.getTimestamp("timeOfOrder");
-                    Boolean completed = rs.getBoolean("completed");
-                    receipt = new Receipt(idReceipt, iduser, timeOfOrder, completed);
+                    Boolean complete = rs.getBoolean("complete");
+                    receipt = new Receipt(idReceipt, iduser, timeOfOrder, complete);
                     receiptList.add(receipt);
                 }
                 return receiptList;
@@ -62,8 +62,8 @@ public class ReceiptMapper
                 {
                     int iduser = rs.getInt("iduser");
                     Timestamp timeOfOrder = rs.getTimestamp("timeOfOrder");
-                    Boolean completed = rs.getBoolean("completed");
-                    receipt = new Receipt(idReceipt, iduser, timeOfOrder, completed);
+                    Boolean complete = rs.getBoolean("complete");
+                    receipt = new Receipt(idReceipt, iduser, timeOfOrder, complete);
                 }
                 return receipt;
             }
@@ -110,7 +110,6 @@ public class ReceiptMapper
     static int createReceipt(int iduser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception
     {
         Logger.getLogger("web").log(Level.INFO, "");
-        Receipt receipt;
         String sql = "insert into receipt (idUser) values (?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -165,7 +164,7 @@ public class ReceiptMapper
         return 0;
     }
 
-    static void setReceiptCompleted(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
+    static void setReceiptComplete(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
