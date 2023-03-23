@@ -14,9 +14,10 @@
 
     <jsp:body>
 
-
-        <div class="mt-3">
-            <input type="submit" formaction="" formmethod="post" class="btn btn-secondary" value="View all Receipts">
+        <div class="text-start">
+            <form action="Receipts" method="post">
+                <input type="submit" class="btn btn-secondary fw-bold" value="View all Receipts"/>
+            </form>
         </div>
 
 
@@ -53,7 +54,7 @@
                     <th>Edit</th>
                 </tr>
 
-                <c:forEach var="user" items="${sessionScope.userList}">
+                <c:forEach var="user" items="${requestScope.userList}">
                     <tr>
                         <td>${user.idUser}</td>
                         <td>${user.username}</td>

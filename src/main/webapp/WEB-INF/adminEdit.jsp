@@ -14,6 +14,12 @@
 
     <jsp:body>
 
+        <div class="text-start">
+            <form action="AdminPanel" method="post">
+                <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
+            </form>
+        </div>
+
 
         <div class="text-start-2">
             <p><b> Over view for: ${requestScope.editUser} </b></p>

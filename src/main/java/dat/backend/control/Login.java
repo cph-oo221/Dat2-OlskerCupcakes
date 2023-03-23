@@ -52,7 +52,7 @@ public class Login extends HttpServlet
 
                 ArrayList<User> userList = (ArrayList<User>) Facade.getAllUsers(connectionPool);
                 System.out.println(userList);
-                session.setAttribute("userList", userList);
+                request.setAttribute("userList", userList); // todo maybe change to request
 
                 request.getRequestDispatcher("WEB-INF/adminPanel.jsp").forward(request, response);
             }
