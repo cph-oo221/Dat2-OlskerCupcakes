@@ -35,6 +35,22 @@ CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`bottom` (
 
 
 -- -----------------------------------------------------
+-- Table `oskarsmuffins`.`top`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `oskarsmuffins`.`top` ;
+
+CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`top` (
+                                                     `idTop` INT NOT NULL AUTO_INCREMENT,
+                                                     `name` VARCHAR(45) NOT NULL,
+    `price` INT NOT NULL,
+    PRIMARY KEY (`idTop`))
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 23
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `oskarsmuffins`.`user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `oskarsmuffins`.`user` ;
@@ -73,22 +89,6 @@ CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`receipt` (
 
 
 -- -----------------------------------------------------
--- Table `oskarsmuffins`.`top`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `oskarsmuffins`.`top` ;
-
-CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`top` (
-                                                     `idTop` INT NOT NULL AUTO_INCREMENT,
-                                                     `name` VARCHAR(45) NOT NULL,
-    `price` INT NOT NULL,
-    PRIMARY KEY (`idTop`))
-    ENGINE = InnoDB
-    AUTO_INCREMENT = 23
-    DEFAULT CHARACTER SET = utf8mb4
-    COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
 -- Table `oskarsmuffins`.`order`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `oskarsmuffins`.`order` ;
@@ -98,6 +98,7 @@ CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`order` (
                                                        `idReceipt` INT NOT NULL,
                                                        `idTop` INT NOT NULL,
                                                        `idBottom` INT NOT NULL,
+                                                       `amount` INT NOT NULL,
                                                        PRIMARY KEY (`idOrder`),
     INDEX `fk_order_top1_idx` (`idTop` ASC) VISIBLE,
     INDEX `fk_order_bottom1_idx` (`idBottom` ASC) VISIBLE,
@@ -105,12 +106,12 @@ CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`order` (
     CONSTRAINT `fk_order_bottom1`
     FOREIGN KEY (`idBottom`)
     REFERENCES `oskarsmuffins`.`bottom` (`idBottom`),
-    CONSTRAINT `fk_orders_receipt1`
-    FOREIGN KEY (`idReceipt`)
-    REFERENCES `oskarsmuffins`.`receipt` (`idReceipt`),
     CONSTRAINT `fk_order_top1`
     FOREIGN KEY (`idTop`)
-    REFERENCES `oskarsmuffins`.`top` (`idTop`))
+    REFERENCES `oskarsmuffins`.`top` (`idTop`),
+    CONSTRAINT `fk_orders_receipt1`
+    FOREIGN KEY (`idReceipt`)
+    REFERENCES `oskarsmuffins`.`receipt` (`idReceipt`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;

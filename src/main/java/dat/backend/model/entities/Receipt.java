@@ -3,7 +3,8 @@ package dat.backend.model.entities;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class Receipt {
+public class Receipt
+{
     private int iduser;
     private Timestamp timeOfOrder;
     private Boolean completed;
@@ -23,15 +24,18 @@ public class Receipt {
         this.completed = completed;
     }
 
-    public int getiduser() {
+    public int getiduser()
+    {
         return iduser;
     }
 
-    public Timestamp getTimeOfOrder() {
+    public Timestamp getTimeOfOrder()
+    {
         return timeOfOrder;
     }
 
-    public boolean getCompleted() {
+    public boolean getCompleted()
+    {
         return completed;
     }
 
@@ -41,7 +45,8 @@ public class Receipt {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Receipt receipt = (Receipt) o;
@@ -49,7 +54,8 @@ public class Receipt {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(iduser, timeOfOrder, completed);
     }
 
