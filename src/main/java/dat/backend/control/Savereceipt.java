@@ -3,16 +3,13 @@ package dat.backend.control;
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.OrderItem;
 import dat.backend.model.entities.User;
-import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
-import dat.backend.model.entities.Receipt;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "Savereceipt", value = "/savereceipt")
@@ -47,17 +44,9 @@ public class Savereceipt extends HttpServlet
                 request.setAttribute("orderItemList", orderItemList);
                 request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
             }
-            catch (SQLException throwables)
+            catch (Exception throwables)
             {
                 throwables.printStackTrace();
-            }
-            catch (DatabaseException e)
-            {
-                e.printStackTrace();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
             }
 
         } else
