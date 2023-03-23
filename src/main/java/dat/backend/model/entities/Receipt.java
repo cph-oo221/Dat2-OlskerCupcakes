@@ -1,4 +1,4 @@
-package dat.backend.model.persistence;
+package dat.backend.model.entities;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -11,6 +11,13 @@ public class Receipt {
     public Receipt(int idReceipt, int iduser, Timestamp timeOfOrder, Boolean completed) {
         this.iduser = iduser;
         this.timeOfOrder = timeOfOrder;
+        this.completed = completed;
+    }
+
+    public Receipt(int iduser, boolean completed)
+    {
+        // TESTING CONSTRUCTOR
+        this.iduser = iduser;
         this.completed = completed;
     }
 

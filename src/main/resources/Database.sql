@@ -35,6 +35,22 @@ CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`bottom` (
 
 
 -- -----------------------------------------------------
+-- Table `oskarsmuffins`.`top`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `oskarsmuffins`.`top` ;
+
+CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`top` (
+                                                     `idTop` INT NOT NULL AUTO_INCREMENT,
+                                                     `name` VARCHAR(45) NOT NULL,
+    `price` INT NOT NULL,
+    PRIMARY KEY (`idTop`))
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 23
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `oskarsmuffins`.`user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `oskarsmuffins`.`user` ;
@@ -58,32 +74,16 @@ CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`user` (
 DROP TABLE IF EXISTS `oskarsmuffins`.`receipt` ;
 
 CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`receipt` (
-                                                         `idReceipts` INT NOT NULL AUTO_INCREMENT,
+                                                         `idReceipt` INT NOT NULL AUTO_INCREMENT,
                                                          `idUser` INT NOT NULL,
                                                          `timeOfOrder` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                                          `complete` TINYINT NOT NULL DEFAULT '0',
-                                                         PRIMARY KEY (`idReceipts`),
-    INDEX `fk_receipts_user1_idx` (`idUser` ASC) VISIBLE,
-    CONSTRAINT `fk_receipts_user1`
+                                                         PRIMARY KEY (`idReceipt`),
+    INDEX `fk_receipt_user1_idx` (`idUser` ASC) VISIBLE,
+    CONSTRAINT `fk_receipt_user1`
     FOREIGN KEY (`idUser`)
     REFERENCES `oskarsmuffins`.`user` (`idUser`))
     ENGINE = InnoDB
-    DEFAULT CHARACTER SET = utf8mb4
-    COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `oskarsmuffins`.`top`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `oskarsmuffins`.`top` ;
-
-CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`top` (
-                                                     `idTop` INT NOT NULL AUTO_INCREMENT,
-                                                     `name` VARCHAR(45) NOT NULL,
-    `price` INT NOT NULL,
-    PRIMARY KEY (`idTop`))
-    ENGINE = InnoDB
-    AUTO_INCREMENT = 23
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
@@ -94,23 +94,24 @@ CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`top` (
 DROP TABLE IF EXISTS `oskarsmuffins`.`order` ;
 
 CREATE TABLE IF NOT EXISTS `oskarsmuffins`.`order` (
-                                                       `idOrders` INT NOT NULL AUTO_INCREMENT,
-                                                       `idReceipts` INT NOT NULL,
+                                                       `idOrder` INT NOT NULL AUTO_INCREMENT,
+                                                       `idReceipt` INT NOT NULL,
                                                        `idTop` INT NOT NULL,
                                                        `idBottom` INT NOT NULL,
-                                                       PRIMARY KEY (`idOrders`),
-    INDEX `fk_orders_top1_idx` (`idTop` ASC) VISIBLE,
-    INDEX `fk_orders_bottom1_idx` (`idBottom` ASC) VISIBLE,
-    INDEX `fk_orders_receipts1_idx` (`idReceipts` ASC) VISIBLE,
-    CONSTRAINT `fk_orders_bottom1`
+                                                       `amount` INT NOT NULL,
+                                                       PRIMARY KEY (`idOrder`),
+    INDEX `fk_order_top1_idx` (`idTop` ASC) VISIBLE,
+    INDEX `fk_order_bottom1_idx` (`idBottom` ASC) VISIBLE,
+    INDEX `fk_order_receipt1_idx` (`idReceipt` ASC) VISIBLE,
+    CONSTRAINT `fk_order_bottom1`
     FOREIGN KEY (`idBottom`)
     REFERENCES `oskarsmuffins`.`bottom` (`idBottom`),
-    CONSTRAINT `fk_orders_receipts1`
-    FOREIGN KEY (`idReceipts`)
-    REFERENCES `oskarsmuffins`.`receipt` (`idReceipts`),
-    CONSTRAINT `fk_orders_top1`
+    CONSTRAINT `fk_order_top1`
     FOREIGN KEY (`idTop`)
-    REFERENCES `oskarsmuffins`.`top` (`idTop`))
+    REFERENCES `oskarsmuffins`.`top` (`idTop`),
+    CONSTRAINT `fk_orders_receipt1`
+    FOREIGN KEY (`idReceipt`)
+    REFERENCES `oskarsmuffins`.`receipt` (`idReceipt`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;

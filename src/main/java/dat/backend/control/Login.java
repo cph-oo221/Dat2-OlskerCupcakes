@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "login", urlPatterns = {"/login"} )
 public class Login extends HttpServlet
@@ -39,12 +40,26 @@ public class Login extends HttpServlet
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+
         try
         {
             User user = Facade.login(email, password, connectionPool);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
-            request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+
+            if (user.getRole().equalsIgnoreCase("admin"))
+            {
+
+                ArrayList<User> userList = (ArrayList<User>) Facade.getAllUsers(connectionPool);
+                System.out.println(userList);
+                session.setAttribute("userList", userList);
+
+                request.getRequestDispatcher("WEB-INF/adminPanel.jsp").forward(request, response);
+            }
+            else
+            {
+                request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+            }
         }
         catch (DatabaseException e)
         {
