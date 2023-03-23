@@ -168,7 +168,7 @@ public class ReceiptMapper
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        String sql = "UPDATE receipt SET complete = (complete - 1) WHERE idReceipt = ?";
+        String sql = "UPDATE receipt SET complete = (1 - complete) WHERE idReceipt = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
