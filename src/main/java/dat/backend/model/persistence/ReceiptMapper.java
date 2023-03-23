@@ -3,7 +3,6 @@ package dat.backend.model.persistence;
 import dat.backend.model.entities.OrderItem;
 import dat.backend.model.entities.Receipt;
 import dat.backend.model.exceptions.DatabaseException;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -164,7 +163,7 @@ public class ReceiptMapper
         return 0;
     }
 
-    static void setReceiptComplete(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
+    static void toggleReceipt(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
