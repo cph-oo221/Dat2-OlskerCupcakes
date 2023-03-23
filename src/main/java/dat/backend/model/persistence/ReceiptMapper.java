@@ -91,11 +91,11 @@ public class ReceiptMapper {
     static int createReceipt(int iduser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception {
         Logger.getLogger("web").log(Level.INFO, "");
         Receipt receipt;
-        String sql = "insert into receipt (iduser) values (?)";
+        String sql = "insert into receipt (idUser) values (?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, iduser);
-                ps.executeUpdate(sql);
+
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     sql = "SELECT LAST_INSERT_ID()";
@@ -110,7 +110,7 @@ public class ReceiptMapper {
                                     int idTop = orderItem.getTop().getIdTop();
                                     int idBottom = orderItem.getBottom().getIdBottom();
                                     int amount = orderItem.getAmount();
-                                    sql = "INSERT INTO order (idReceipt, idTop, idBottom, amount) values (?,?,?,?)";
+                                    sql = "INSERT INTO `order` (idReceipt, idTop, idBottom, amount) values (?,?,?,?)";
                                     try (PreparedStatement psInsertOrder = connection.prepareStatement(sql)) {
                                         psInsertOrder.setInt(1, idReceipt);
                                         psInsertOrder.setInt(2, idTop);
@@ -118,10 +118,11 @@ public class ReceiptMapper {
                                         psInsertOrder.setInt(4, amount);
                                         psInsertOrder.executeUpdate();
                                     } catch (SQLException e) {
+                                        e.printStackTrace();
                                         throw new SQLException("The orderItem with the top " + orderItem.getTop().getIdTop() + " and bottom " + orderItem.getBottom().getIdBottom() + " could not be added");
                                     }
-                                    return idReceipt;
                                 }
+                                    return idReceipt;
                             }
                         } else {
                             throw new Exception("The orderItemList is empty");
@@ -131,7 +132,7 @@ public class ReceiptMapper {
                     throw new DatabaseException("The receipt with iduser = " + iduser + " could not be inserted into the database");
                 }
             } catch (SQLException ex) {
-                throw new DatabaseException(ex, "Could not insert top into database");
+                ex.printStackTrace();
             }
         }
         return 0;
