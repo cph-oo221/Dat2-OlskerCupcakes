@@ -45,6 +45,7 @@
         <div class="mt-3">
             <table class="table table-dark table-striped">
                 <tr>
+                    <th>User id</th>
                     <th>Email</th>
                     <th>Password</th>
                     <td>Role</td>
@@ -54,6 +55,7 @@
 
                 <c:forEach var="user" items="${sessionScope.userList}">
                     <tr>
+                        <td>${user.idUser}</td>
                         <td>${user.username}</td>
                         <td>${user.password}</td>
                         <td>${user.role}</td>
@@ -62,7 +64,10 @@
                         <td>
                             <form action="EditUser" method="post">
                                 <input type="text" hidden name="Email" value="${user.username}">
+                                <input type="text" hidden name="Password" value="${user.password}">
+                                <input type="text" hidden name="Role" value="${user.role}">
                                 <input type="text" hidden name="Balance" value="${user.balance}">
+                                <input type="text" hidden name="UserId" value="${user.idUser}">
                                 <input type="submit" class="btn btn-secondary" value="Edit">
                             </form>
                         </td>
