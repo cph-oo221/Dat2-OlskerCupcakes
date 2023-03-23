@@ -5,6 +5,7 @@ import dat.backend.model.entities.OrderItem;
 import dat.backend.model.entities.User;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
+import dat.backend.model.entities.Receipt;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -28,8 +29,29 @@ public class Savereceipt extends HttpServlet
     {
         // TODO: Create receipt and save to database
         User user = (User) request.getSession().getAttribute("user");
-        List<OrderItem> orderItemList = (List<OrderItem>) request.getSession().getAttribute("orderItemList");
 
-        request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
+        if (user != null)
+        {
+            List<OrderItem> orderItemList = (List<OrderItem>) request.getSession().getAttribute("orderItemList");
+            int idReceipt;
+
+            try
+            {
+                idReceipt = Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
+                // TODO: GET FROM DB
+                // orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
+
+                request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
+            }
+
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+        } else
+        {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 }

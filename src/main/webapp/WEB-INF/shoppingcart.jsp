@@ -5,7 +5,9 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
+        <div class="text-center">
          Shoppingcart
+        </div>
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,7 +15,21 @@
 
     <jsp:body>
 
-
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                <table>
+                        <c:forEach var="item" items="${sessionScope.orderItemList}">
+                    <tr>
+                        <td>${item.toString()}</td>
+                    </tr>
+                        </c:forEach>
+                </table>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
 
     </jsp:body>
 
