@@ -42,7 +42,6 @@ public class Savereceipt extends HttpServlet
                 orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
 
                 request.setAttribute("orderItemList", orderItemList);
-
                 request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
             }
 

@@ -19,7 +19,7 @@ public class OrderMapper
 
         List<OrderItem> orderItemList = new ArrayList<>();
 
-        String sql = "SELECT idTop, idBottom, amount FROM order WHERE idReceipt = ?";
+        String sql = "SELECT idTop, idBottom, amount FROM `order` WHERE idReceipt = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
