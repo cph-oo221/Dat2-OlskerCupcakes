@@ -28,7 +28,7 @@ public class OrderMapper {
                     int idBottom = rs.getInt("idBottom");
                     int amount= rs.getInt("amount");
                     Top top = Facade.getTopById(idTop, connectionPool);
-                    Bottom bottom = Facade.getBottomById(idTop, connectionPool);
+                    Bottom bottom = Facade.getBottomById(idBottom, connectionPool);
                     OrderItem orderItem = new OrderItem(bottom, top, amount);
                     orderItemList.add(orderItem);
                 }

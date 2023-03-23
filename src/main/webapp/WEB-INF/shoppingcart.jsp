@@ -20,7 +20,7 @@
                 <div class="col"></div>
                 <div class="col">
                 <table>
-                        <c:forEach var="item" items="${sessionScope.orderItemList}">
+                        <c:forEach var="item" items="${requestScope.orderItemList}">
                     <tr>
                         <td>${item.toString()}</td>
                     </tr>

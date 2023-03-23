@@ -38,6 +38,7 @@ public class Savereceipt extends HttpServlet
             try
             {
                 idReceipt = Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
+
                 // TODO: GET FROM DB
                 orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
 
