@@ -81,18 +81,10 @@ public class Facade
         return new Receipt(4, false);
     }
 
-    public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool)
+    public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool) throws SQLException, DatabaseException
     {
         // TODO: TESTING METHOD, IMPLEMENT DB
-        try {
             return OrderMapper.getOrderByReceiptId(idReceipt, connectionPool);
-        } catch (DatabaseException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
     public static int createReceipt(int idUser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception

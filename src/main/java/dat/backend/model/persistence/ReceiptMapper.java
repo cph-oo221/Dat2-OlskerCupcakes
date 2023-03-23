@@ -133,7 +133,7 @@ public class ReceiptMapper
                                     int idTop = orderItem.getTop().getIdTop();
                                     int idBottom = orderItem.getBottom().getIdBottom();
                                     int amount = orderItem.getAmount();
-                                    sql = "INSERT INTO 'order' (idReceipt, idTop, idBottom, amount) values (?,?,?,?)";
+                                    sql = "INSERT INTO `order` (idReceipt, idTop, idBottom, amount) values (?,?,?,?)";
                                     try (PreparedStatement psInsertOrder = connection.prepareStatement(sql))
                                     {
                                         psInsertOrder.setInt(1, idReceipt);
