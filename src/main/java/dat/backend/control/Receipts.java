@@ -1,6 +1,8 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
+import dat.backend.model.entities.Receipt;
+import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
@@ -31,18 +33,9 @@ public class Receipts extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        ArrayList<Receipts> receipts = null;
-        /*
+        ArrayList<Receipt> receipts = (ArrayList<Receipt>) Facade.getAllReceipts(connectionPool);
+        System.out.println(receipts);
 
-        try
-        {
-            receipts = Facade.
-        }
-        catch (DatabaseException e)
-        {
-            e.printStackTrace();
-        }
-       */
         request.setAttribute("receipts", receipts);
 
         request.getRequestDispatcher("WEB-INF/receipts.jsp").forward(request, response);

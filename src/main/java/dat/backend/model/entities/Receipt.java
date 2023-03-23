@@ -7,8 +7,10 @@ public class Receipt {
     private int iduser;
     private Timestamp timeOfOrder;
     private Boolean completed;
+    private int idReceipt;
 
     public Receipt(int idReceipt, int iduser, Timestamp timeOfOrder, Boolean completed) {
+        this.idReceipt = idReceipt;
         this.iduser = iduser;
         this.timeOfOrder = timeOfOrder;
         this.completed = completed;
@@ -31,6 +33,11 @@ public class Receipt {
 
     public Boolean getCompleted() {
         return completed;
+    }
+
+    public int getIdReceipt()
+    {
+        return idReceipt;
     }
 
     @Override

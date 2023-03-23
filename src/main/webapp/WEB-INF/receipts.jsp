@@ -44,16 +44,16 @@
                     <th>Get all items</th>
                 </tr>
 
-                <c:forEach var="receipt" items="${sessionScope.userList}">
+                <c:forEach var="receipt" items="${requestScope.receipts}">
                     <tr>
-                        <td>${user.idUser}</td>
-                        <td>${user.username}</td>
-                        <td>${user.password}</td>
-                        <td>${user.role}</td>
+                        <td>${receipt.idReceipt}</td>
+                        <td>${receipt.getiduser}</td> <!-- maybe change to getiduser() -->
+                        <td>${receipt.timeOfOrder}</td>
+                        <td>${receipt.completed}</td>
 
                         <td>
                             <form action="" method="post">
-                                <input type="text" hidden name="" value="">
+                                <input type="text" hidden name="id" value="${receipt.idReceipt}">
                                 <input type="submit" class="btn btn-secondary" value="Get Order Items">
                             </form>
                         </td>

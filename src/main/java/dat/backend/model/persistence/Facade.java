@@ -96,4 +96,17 @@ public class Facade
     {
         return UserMapper.getAllUsers(connectionPool);
     }
+
+    public static List<Receipt> getAllReceipts(ConnectionPool connectionPool)
+    {
+        List<Receipt> receipts = new ArrayList<>();
+
+        receipts.add(new Receipt(14, false));
+        receipts.add(new Receipt(12, true));
+        receipts.add(new Receipt(23, false));
+        receipts.add(new Receipt(1, true));
+        receipts.add(new Receipt(4, false));
+
+        return receipts;
+    }
 }
