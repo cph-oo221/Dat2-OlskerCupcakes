@@ -31,8 +31,14 @@ public class Receipts extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        HttpSession session = request.getSession();
-        ArrayList<Receipt> receipts = (ArrayList<Receipt>) Facade.getAllReceipts(connectionPool);
+        ArrayList<Receipt> receipts = null;
+        try
+        {
+            receipts = (ArrayList<Receipt>) Facade.getAllReceipts(connectionPool);
+        } catch (DatabaseException e)
+        {
+            e.printStackTrace();
+        }
 
         request.setAttribute("receipts", receipts);
 

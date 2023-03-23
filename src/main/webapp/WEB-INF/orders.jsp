@@ -13,7 +13,9 @@
     </jsp:attribute>
 
     <jsp:body>
-        <p>${requestScope.idReceipt}</p>
+        <c:forEach var="items" items="${requestScope.orderItems}">
+            <p>${items.toString()}</p>
+        </c:forEach>
 
     </jsp:body>
 </t:pagetemplate>

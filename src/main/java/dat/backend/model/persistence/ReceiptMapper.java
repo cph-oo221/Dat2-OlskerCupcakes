@@ -91,10 +91,10 @@ public class ReceiptMapper
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
-                    int iduser = rs.getInt("iduser");
-                    int idReceipt = rs.getInt("idreceipt");
+                    int iduser = rs.getInt("idUser");
+                    int idReceipt = rs.getInt("idReceipt");
                     Timestamp timeOfOrder = rs.getTimestamp("timeOfOrder");
-                    Boolean completed = rs.getBoolean("completed");
+                    Boolean completed = rs.getBoolean("complete");
                     receipt = new Receipt(idReceipt, iduser, timeOfOrder, completed);
                     receiptList.add(receipt);
                 }
