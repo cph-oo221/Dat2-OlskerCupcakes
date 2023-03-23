@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Facade
 {
-    // User *************************
+    // User ************************************************************************************************************
     public static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         try {
@@ -32,9 +32,14 @@ public class Facade
     {
         UserMapper.updateBalance(idUser, balance, connectionPool);
     }
-    // ************************************
 
-    // Bottom *****************************
+    public static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException
+    {
+        return UserMapper.getAllUsers(connectionPool);
+    }
+    // ****************************************************************************************************************
+
+    // Bottom *********************************************************************************************************
     public static ArrayList<Bottom> getBottoms(ConnectionPool connectionPool) throws DatabaseException {
 
          return BottomMapper.getAllBottoms(connectionPool);
@@ -52,30 +57,23 @@ public class Facade
 
        // return new Bottom(1, "Chocolate", 5);
     }
-    // ************************************
+    // ****************************************************************************************************************
 
 
     // Top ********************************
-    public static ArrayList<Top> getTops(ConnectionPool connectionPool) throws DatabaseException {
-
+    public static ArrayList<Top> getTops(ConnectionPool connectionPool) throws DatabaseException
+    {
          return TopMapper.getAllTops(connectionPool);
-
-       /* ArrayList<Top> tops = new ArrayList<>();
-        tops.add(new Top(1, "ChocolateTest", 5));
-        tops.add(new Top(2, "BlueberryTest", 5));
-        tops.add(new Top(3, "RaspberryTest", 5));
-        return tops;*/
     }
 
-    public static Top getTopById(int idTop, ConnectionPool connectionPool) throws SQLException, DatabaseException {
+    public static Top getTopById(int idTop, ConnectionPool connectionPool) throws SQLException, DatabaseException
+    {
         return TopMapper.getTopById(idTop,connectionPool);
-
-       // return new Top(1, "Chocolate", 5);
     }
-    // ************************************
+    // ****************************************************************************************************************
 
 
-    // Receipt ****************************
+    // Receipt ********************************************************************************************************
     public static Receipt getReceiptById(int idReceipt, ConnectionPool connectionPool)
     {
         // TODO: TESTING METHOD, IMPLEMENT DB
@@ -94,10 +92,5 @@ public class Facade
     {
         return ReceiptMapper.createReceipt(idUser, orderItemList, connectionPool);
     }
-    // ************************************
-
-    public static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException
-    {
-        return UserMapper.getAllUsers(connectionPool);
-    }
+    // ****************************************************************************************************************
 }
