@@ -30,19 +30,22 @@
         </c:if>
 
         <style>
-            table {
+            table
+            {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
             }
 
-            td, th {
+            td, th
+            {
                 /*border: 1px solid #dddddd;*/
                 text-align: left;
                 padding: 8px;
             }
 
-            tr:nth-child(even) {
+            tr:nth-child(even)
+            {
                 background-color: #dddddd;
             }
         </style>
@@ -64,17 +67,22 @@
                 <tr>
                     <td></td>
                     <td class="fw-bold">Total Price: ${requestScope.total}</td>
-                    <c:if test="${requestScope.complete == false}">
-                        <form action="purchase" method="post">
-
-                            <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
-                            <input type="text" value="${requestScope.total}" hidden name="total">
-                            <input type="submit" value="Purchase" class="btn btn-secondary fw-bold mb-4">
-                        </form>
-                    </c:if>
-
                 </tr>
             </table>
+        </div>
+
+        <div class="text-end">
+            <c:if test="${sessionScope.user.role.equalsIgnoreCase('user')}">
+                <c:if test="${requestScope.complete == false}">
+                    <form action="purchase" method="post">
+
+                        <input type="text" value="${requestScope.idReceipt}" hidden
+                               name="idReceipt">
+                        <input type="text" value="${requestScope.total}" hidden name="total">
+                        <input type="submit" class="btn btn-secondary fw-bold" value="Purchase">
+                    </form>
+                </c:if>
+            </c:if>
         </div>
 
     </jsp:body>
