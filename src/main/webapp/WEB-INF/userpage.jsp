@@ -5,15 +5,19 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-        <div class="text-center">
             Your orders
-        </div>
     </jsp:attribute>
 
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
+    <style>
+        h1
+        {
+            text-align: center;
+        }
+    </style>
 
         <div class="mt-3">
             <h3>Incomplete orders</h3>
