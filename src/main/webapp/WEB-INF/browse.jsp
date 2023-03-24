@@ -55,7 +55,9 @@
 
                     <div class="col">
                         <h3>Amount</h3>
-                        <input type="number" name="amount" value="1" min="1">
+                        <input type="number" name="amount" value="1" min="1" max="100">
+                        <br><br>
+                        <button type="submit" class="btn btn-secondary fw-bold">Add</button>
                     </div>
                     <div class="col">
 
@@ -65,6 +67,9 @@
                             <c:forEach var="orderitem" items="${sessionScope.orderItemList}">
                                 <tr>
                                     <td>${orderitem.toString()}</td>
+                                    <td>
+                                        <button type="submit" formaction="removesessionitem" name="orderitemstring" value="${orderitem.toString()}" class="btn btn-danger">x</button>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>
@@ -73,11 +78,9 @@
 
                     <div class="col-2">
                         <br><br>
-                        <td>Total: ${sessionScope.totalSum}</td>
-                        <br><br><br><br>
-                        <button type="submit">Add</button>
+                        <td>Total price: ${sessionScope.totalSum}</td>
                         <br><br>
-                        <button type="submit" formaction="savereceipt">Save and continue</button>
+                        <button type="submit" formaction="savereceipt" class="btn btn-secondary fw-bold">Save and continue</button>
                         <br>
                         <p>${requestScope.msg}</p>
                     </div>
