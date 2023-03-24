@@ -36,15 +36,13 @@
                 width: 100%;
             }
 
-            td, th
-            {
+            td, th {
                 /*border: 1px solid #dddddd;*/
                 text-align: left;
                 padding: 8px;
             }
 
-            tr:nth-child(even)
-            {
+            tr:nth-child(even) {
                 background-color: #dddddd;
             }
         </style>
@@ -57,33 +55,24 @@
                 </tr>
 
                 <c:forEach var="items" items="${requestScope.orderItems}">
-                <tr>
-                    <td>${items.toString()}</td>
-                    <td>${items.totalPrice}</td>
-                </tr>
+                    <tr>
+                        <td>${items.toString()}</td>
+                        <td>${items.totalPrice}</td>
+                    </tr>
                 </c:forEach>
 
                 <tr>
                     <td></td>
                     <td class="fw-bold">Total Price: ${requestScope.total}</td>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="col">
-                                    <c:if test="${requestScope.complete == false}">
-                                    <form action="purchase" method="post">
+                    <c:if test="${requestScope.complete == false}">
+                        <form action="purchase" method="post">
 
-                                    <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
-                                    <input type="text" value="${requestScope.total}" hidden name="total">
-                                        <input type="submit" value="purchase">
-                                    </form>
-                                    </c:if>
-                                </div>
-                                </div>
-                            </div>
+                            <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
+                            <input type="text" value="${requestScope.total}" hidden name="total">
+                            <input type="submit" value="Purchase" class="btn btn-secondary fw-bold mb-4">
+                        </form>
+                    </c:if>
 
-                        </div>
-                    </div>
                 </tr>
             </table>
         </div>
