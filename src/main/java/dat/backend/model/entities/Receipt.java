@@ -65,7 +65,7 @@ public class Receipt
         return "Receipt{" +
                 "iduser=" + iduser +
                 ", timeOfOrder=" + timeOfOrder +
-                ", completed=" + complete +
+                ", complete=" + complete +
                 ", idReceipt=" + idReceipt +
                 '}';
     }

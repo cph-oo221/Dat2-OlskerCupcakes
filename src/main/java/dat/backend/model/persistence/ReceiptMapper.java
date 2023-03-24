@@ -173,6 +173,7 @@ public class ReceiptMapper
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
+                ps.setInt(1,idReceipt);
                 ps.executeUpdate();
             }
             catch (SQLException ex)

@@ -29,6 +29,11 @@ public class OrderItem
         return amount;
     }
 
+    public int getTotalPrice()
+    {
+        return (top.getPrice() + bottom.getPrice())*amount;
+    }
+
     @Override
     public String toString()
     {
