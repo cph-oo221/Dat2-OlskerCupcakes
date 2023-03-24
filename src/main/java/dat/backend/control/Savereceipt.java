@@ -26,7 +26,6 @@ public class Savereceipt extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        // TODO: Create receipt and save to database
         User user = (User) request.getSession().getAttribute("user");
 
         if (user != null)
@@ -36,13 +35,21 @@ public class Savereceipt extends HttpServlet
 
             try
             {
-                idReceipt = Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
+                if (orderItemList.size() > 1)
+                {
+                    idReceipt = Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
 
-                // TODO: GET FROM DB
-                orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
+                    orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
 
-                request.setAttribute("orderItemList", orderItemList);
-                request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
+                    request.setAttribute("orderItemList", orderItemList);
+                    request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
+                }
+
+                else
+                {
+                    request.setAttribute("msg", "Order must consist of at least 1 item");
+                    request.getRequestDispatcher("WEB-INF/browse.jsp").forward(request, response);
+                }
             }
             catch (Exception throwables)
             {

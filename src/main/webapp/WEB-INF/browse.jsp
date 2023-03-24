@@ -78,6 +78,8 @@
                         <button type="submit">Add</button>
                         <br><br>
                         <button type="submit" formaction="savereceipt">Save and continue</button>
+                        <br>
+                        <p>${requestScope.msg}</p>
                     </div>
                 </div>
                 <br><br>
