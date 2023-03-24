@@ -5,15 +5,19 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-        <div class="text-center">
             Your orders
-        </div>
     </jsp:attribute>
 
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
+    <style>
+        h1
+        {
+            text-align: center;
+        }
+    </style>
 
         <div class="mt-3">
             <h3>Incomplete orders</h3>
@@ -21,7 +25,6 @@
                 <tr>
                     <th>Order Number</th>
                     <th>Time Of Order</th>
-                    <td>Complete</td>
                     <th>Actions</th>
                 </tr>
 
@@ -30,9 +33,6 @@
                         <tr>
                             <td>${receipt.idReceipt}</td>
                             <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
-                            <td>${receipt.complete}</td>
-
-
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
@@ -52,7 +52,6 @@
                 <tr>
                     <th>Order Number</th>
                     <th>Time Of Order</th>
-                    <td>Complete</td>
                     <th>Actions</th>
                 </tr>
 
@@ -61,9 +60,6 @@
                         <tr>
                             <td>${receipt.idReceipt}</td>
                             <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
-                            <td>${receipt.complete}</td>
-
-
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">

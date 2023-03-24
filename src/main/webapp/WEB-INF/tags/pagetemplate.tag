@@ -63,7 +63,6 @@
             <p>${sessionScope.user.username}</p>
         </c:if>
     </div>
-
     <h1>
         <jsp:invoke fragment="header"/>
     </h1>

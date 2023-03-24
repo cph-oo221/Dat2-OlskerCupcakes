@@ -14,11 +14,11 @@
 
     <jsp:body>
         <c:if test="${sessionScope.user.role.equalsIgnoreCase('admin')}">
-        <div class="text-start">
-            <form action="AdminPanel" method="post">
-                <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
-            </form>
-        </div>
+            <div class="text-start">
+                <form action="AdminPanel" method="post">
+                    <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
+                </form>
+            </div>
         </c:if>
 
         <c:if test="${sessionScope.user.role.equalsIgnoreCase('user')}">
@@ -30,8 +30,7 @@
         </c:if>
 
         <style>
-            table
-            {
+            table {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
@@ -54,21 +53,23 @@
             <table class="table table-dark table-striped">
                 <tr>
                     <th>Orders</th>
+                    <th>Price</th>
                 </tr>
 
                 <c:forEach var="items" items="${requestScope.orderItems}">
-                    <tr>
-                        <td>${items.toString()}</td>
-
-                    </tr>
+                <tr>
+                    <td>${items.toString()}</td>
+                    <td>${items.totalPrice}</td>
+                </tr>
                 </c:forEach>
 
                 <tr>
+                    <td></td>
+                    <td class="fw-bold">Total Price: ${requestScope.total}</td>
                     <div class="container">
                         <div class="row">
                             <div class="col">
                                 <div class="col">
-                                total price = ${requestScope.total}
                                     <form action="Purchase" method="post">
                                     <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
                                     <input type="text" value="${requestScope.total}" hidden name="total">
@@ -79,12 +80,8 @@
                             </div>
 
                         </div>
-
-
                     </div>
-
                 </tr>
-
             </table>
         </div>
 
