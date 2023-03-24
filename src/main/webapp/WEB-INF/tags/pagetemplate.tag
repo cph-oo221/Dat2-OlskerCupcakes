@@ -60,7 +60,9 @@
     <div class="text-end">
         <c:if test="${sessionScope.user != null }">
             <!-- Link sends you to the logout servlet -->
-            <p>${sessionScope.user.username}</p>
+            <p>${sessionScope.user.username} <br/>
+                Balance: ${sessionScope.user.balance}
+            </p>
         </c:if>
     </div>
     <h1>
@@ -88,7 +90,7 @@
         </div>
 
         <div class="col text-center">
-            Kontakt Information:<br/>
+            Contact Information:<br/>
             olskercupcakes@gmail.com<br/>
         </div>
     </div>
