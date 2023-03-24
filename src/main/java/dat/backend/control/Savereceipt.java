@@ -11,6 +11,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "Savereceipt", value = "/savereceipt")
@@ -41,6 +42,7 @@ public class Savereceipt extends HttpServlet
                     Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
                     List<Receipt> receiptList = Facade.getReceiptsByIdUser(user.getIdUser(), connectionPool);
                     request.setAttribute("receiptList", receiptList);
+                    request.setAttribute("orderItemList", new ArrayList<>());
                     request.getRequestDispatcher("WEB-INF/userpage.jsp").forward(request, response);
                 }
 
