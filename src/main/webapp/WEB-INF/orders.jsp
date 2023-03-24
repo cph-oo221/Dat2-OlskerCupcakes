@@ -13,13 +13,22 @@
     </jsp:attribute>
 
     <jsp:body>
-
+        <c:if test="${sessionScope.user.role.equalsIgnoreCase('admin')}">
         <div class="text-start">
             <form action="AdminPanel" method="post">
                 <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
             </form>
         </div>
-        
+        </c:if>
+
+        <c:if test="${sessionScope.user.role.equalsIgnoreCase('user')}">
+            <div class="text-start">
+                <form action="userpage" method="get">
+                    <input type="submit" class="btn btn-secondary fw-bold" value="UserPage"/>
+                </form>
+            </div>
+        </c:if>
+
         <style>
             table
             {
