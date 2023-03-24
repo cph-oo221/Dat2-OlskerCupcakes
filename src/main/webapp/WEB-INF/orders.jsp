@@ -30,7 +30,8 @@
         </c:if>
 
         <style>
-            table {
+            table
+            {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
@@ -57,35 +58,31 @@
                 </tr>
 
                 <c:forEach var="items" items="${requestScope.orderItems}">
-                <tr>
-                    <td>${items.toString()}</td>
-                    <td>${items.totalPrice}</td>
-                </tr>
+                    <tr>
+                        <td>${items.toString()}</td>
+                        <td>${items.totalPrice}</td>
+                    </tr>
                 </c:forEach>
 
                 <tr>
                     <td></td>
                     <td class="fw-bold">Total Price: ${requestScope.total}</td>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="col">
-                                    <c:if test="${requestScope.complete == false}">
-                                    <form action="purchase" method="post">
-
-                                    <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
-                                    <input type="text" value="${requestScope.total}" hidden name="total">
-                                        <input type="submit" value="purchase">
-                                    </form>
-                                    </c:if>
-                                </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </tr>
             </table>
+        </div>
+
+        <div class="text-end">
+            <c:if test="${sessionScope.user.role.equalsIgnoreCase('user')}">
+                <c:if test="${requestScope.complete == false}">
+                    <form action="purchase" method="post">
+
+                        <input type="text" value="${requestScope.idReceipt}" hidden
+                               name="idReceipt">
+                        <input type="text" value="${requestScope.total}" hidden name="total">
+                        <input type="submit" class="btn btn-secondary fw-bold" value="Purchase">
+                    </form>
+                </c:if>
+            </c:if>
         </div>
 
     </jsp:body>
