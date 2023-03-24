@@ -30,7 +30,7 @@
             <div class="col">
                 <div class="text-center">
                     <form action="${pageContext.request.contextPath}/browse" method="get">
-                        <input type="submit" class="btn btn-secondary fw-bold" value="Browse Cupcakes"/>
+                        <input type="submit" class="btn btn-secondary btn-lg fw-bold" value="Browse Cupcakes"/>
                     </form>
                     <br/>
                 </div>
@@ -40,7 +40,7 @@
                 <div class="text-center">
                     <c:if test="${sessionScope.user == null}">
                         <p>You are not logged in yet. You can do it here: </p>
-                        <a href="login.jsp" class="btn btn-secondary fw-bold">Login</a>
+                        <a href="login.jsp" class="btn btn-secondary btn-lg fw-bold">Login</a>
                     </c:if>
                 </div>
             </div>
