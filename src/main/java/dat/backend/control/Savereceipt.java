@@ -33,7 +33,6 @@ public class Savereceipt extends HttpServlet
         if (user != null)
         {
             List<OrderItem> orderItemList = (List<OrderItem>) request.getSession().getAttribute("orderItemList");
-            int idReceipt;
 
             try
             {
