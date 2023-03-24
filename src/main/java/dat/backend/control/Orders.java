@@ -35,7 +35,14 @@ public class Orders extends HttpServlet
 
         ArrayList<OrderItem> orderItems = (ArrayList<OrderItem>) Facade.getOrderByReceiptId(idReceipt,connectionPool);
 
+        int total=0;
+        for(OrderItem orderItem : orderItems)
+        {
+            total += orderItem.getTotalPrice();
+        }
+
         request.setAttribute("orderItems", orderItems);
+        request.setAttribute("total", total);
 
         request.getRequestDispatcher("WEB-INF/orders.jsp").forward(request, response);
     }

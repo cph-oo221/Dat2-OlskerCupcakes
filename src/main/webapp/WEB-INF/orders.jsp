@@ -53,6 +53,22 @@
                     </tr>
                 </c:forEach>
 
+                <tr>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="col">
+                                total price = ${requestScope.total}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </tr>
+
             </table>
         </div>
 
