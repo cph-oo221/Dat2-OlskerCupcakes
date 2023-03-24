@@ -123,19 +123,18 @@ public class Facade
 
     public static boolean purchase(int idUser , int idReceipt , int price , ConnectionPool connectionPool)
     {
-        boolean couldAfford = UserMapper.purchase(idUser , price , connectionPool);
-        if(!couldAfford)
+        if (UserMapper.purchase(idUser , price , connectionPool))
         {
-            return !couldAfford;
-        }
             try
             {
                 ReceiptMapper.toggleReceipt(idReceipt, connectionPool);
+                return true;
             }
             catch (DatabaseException e)
             {
                 e.printStackTrace();
             }
-        return couldAfford;
+        }
+        return false;
     }
 }

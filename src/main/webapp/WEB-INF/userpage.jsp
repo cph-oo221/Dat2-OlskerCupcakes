@@ -20,6 +20,7 @@
     </style>
 
         <div class="mt-3">
+            <p>${sessionScope.msg}</p>
             <h3>Incomplete orders</h3>
             <table class="table table-dark table-striped">
                 <tr>

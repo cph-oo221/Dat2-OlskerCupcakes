@@ -35,19 +35,26 @@ public class Additem extends HttpServlet
         int amount = Integer.parseInt(request.getParameter("amount"));
 
         Bottom bottom = null;
-        try {
+        try
+        {
             bottom = Facade.getBottomById(idBottom, connectionPool);
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             e.printStackTrace();
-        } catch (DatabaseException e) {
+        } catch (DatabaseException e)
+        {
             e.printStackTrace();
         }
         Top top = null;
-        try {
+
+        try
+        {
             top = Facade.getTopById(idTop, connectionPool);
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             e.printStackTrace();
-        } catch (DatabaseException e) {
+        } catch (DatabaseException e)
+        {
             e.printStackTrace();
         }
 
@@ -59,8 +66,7 @@ public class Additem extends HttpServlet
         int totalSum = 0;
         for (OrderItem item: orderItemList)
         {
-            int itemSum = item.getBottom().getPrice() + item.getTop().getPrice();
-            totalSum += itemSum * item.getAmount();
+            totalSum += item.getTotalPrice();
         }
 
         request.getSession().setAttribute("totalSum", totalSum);
