@@ -15,12 +15,9 @@ public class Facade
     // User ************************************************************************************************************
     public static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        try {
-            return UserMapper.login(username, password, connectionPool);
-        }catch(DatabaseException ex){
-            ex.printStackTrace();}
-        return null;
+        return UserMapper.login(username, password, connectionPool);
     }
+
 
     public static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException
     {
