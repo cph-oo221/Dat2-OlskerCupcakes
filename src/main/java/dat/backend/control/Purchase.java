@@ -9,7 +9,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.Connection;
 
 @WebServlet(name = "Purchase", value = "/purchase")
 public class Purchase extends HttpServlet
@@ -31,11 +30,10 @@ public class Purchase extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         User user = (User) request.getSession().getAttribute("user");
-        int idUser = user.getIdUser();
         int idReceipt = Integer.parseInt(request.getParameter("idReceipt"));
         int total = Integer.parseInt(request.getParameter("total"));
 
-        Facade.purchase(idUser,idReceipt, total, connectionPool);
+        Facade.purchase(user,idReceipt, total, connectionPool);
 
         response.sendRedirect("userpage");
     }

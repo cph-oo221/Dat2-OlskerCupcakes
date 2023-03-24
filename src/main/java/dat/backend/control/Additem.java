@@ -4,7 +4,6 @@ import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Bottom;
 import dat.backend.model.entities.OrderItem;
 import dat.backend.model.entities.Top;
-import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
@@ -37,17 +36,13 @@ public class Additem extends HttpServlet
         Bottom bottom = null;
         try {
             bottom = Facade.getBottomById(idBottom, connectionPool);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (DatabaseException e) {
+        } catch (SQLException | DatabaseException e) {
             e.printStackTrace();
         }
         Top top = null;
         try {
             top = Facade.getTopById(idTop, connectionPool);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (DatabaseException e) {
+        } catch (SQLException | DatabaseException e) {
             e.printStackTrace();
         }
 

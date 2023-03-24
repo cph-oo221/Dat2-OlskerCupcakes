@@ -121,9 +121,9 @@ public class Facade
         return ReceiptMapper.getAllReceipts(connectionPool);
     }
 
-    public static boolean purchase(int idUser , int idReceipt , int price , ConnectionPool connectionPool)
+    public static boolean purchase(User user , int idReceipt , int price , ConnectionPool connectionPool)
     {
-        boolean couldAfford = UserMapper.purchase(idUser , price , connectionPool);
+        boolean couldAfford = UserMapper.purchase(user, price , connectionPool);
         if(!couldAfford)
         {
             return !couldAfford;
