@@ -64,7 +64,7 @@ public class OrderMapper
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        String sql = "DELETE FROM order WHERE idReceipt = ?";
+        String sql = "DELETE FROM `order` WHERE idReceipt = ?";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
