@@ -29,6 +29,7 @@ public class Additem extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+
         int idBottom = Integer.parseInt(request.getParameter("idBottom"));
         int idTop = Integer.parseInt(request.getParameter("idTop"));
         int amount = Integer.parseInt(request.getParameter("amount"));

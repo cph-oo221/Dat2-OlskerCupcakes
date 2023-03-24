@@ -46,7 +46,7 @@ public class OrderMapper
         }
     }
 
-    static int deleteOrder(int idOrder, ConnectionPool connectionPool) throws SQLException
+    /*static int deleteOrder(int idOrder, ConnectionPool connectionPool) throws SQLException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "DELETE FROM order WHERE idOrder = ?";
@@ -58,7 +58,7 @@ public class OrderMapper
                 return ps.executeUpdate();
             }
         }
-    }
+    }*/
 
     static int deleteAllFromReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
     {
