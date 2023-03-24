@@ -49,6 +49,7 @@
                     <th>Time Of Order</th>
                     <td>Complete</td>
                     <th>Get all items</th>
+                    <th>Remove</th>
                 </tr>
 
                 <c:forEach var="receipt" items="${requestScope.receipts}">
@@ -64,6 +65,20 @@
                                 <input type="submit" class="btn btn-secondary" value="Get Order Items">
                             </form>
                         </td>
+                        <c:if test="${receipt.complete == true}">
+                            <td>
+                                <p></p>
+                            </td>
+                        </c:if>
+                        <c:if test="${receipt.complete == false}">
+                            <td>
+                                <!-- TODO fild in action, name, value  -->
+                                <form action="" method="post">
+                                    <input type="text" hidden name="" value="">
+                                    <input type="submit" class="btn btn-secondary" value="Remove">
+                                </form>
+                            </td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </table>

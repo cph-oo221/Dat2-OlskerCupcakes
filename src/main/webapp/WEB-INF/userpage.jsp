@@ -28,6 +28,7 @@
                     <th>Order Number</th>
                     <th>Time Of Order</th>
                     <th>Actions</th>
+                    <th>Remove</th>
                 </tr>
 
                 <c:forEach var="receipt" items="${requestScope.receiptList}">
@@ -40,6 +41,12 @@
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
                                     <input type="text" hidden name="complete" value="${receipt.complete}">
                                     <input type="submit" class="btn btn-secondary" value="View order">
+                                </form>
+                            </td>
+                            <td> <!-- TODO fild in action, name, value  -->
+                                <form action="" method="post">
+                                    <input type="text" hidden name="" value="">
+                                    <input type="submit" class="btn btn-secondary" value="Remove">
                                 </form>
                             </td>
                         </tr>
