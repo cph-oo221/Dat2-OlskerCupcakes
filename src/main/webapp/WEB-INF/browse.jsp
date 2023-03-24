@@ -68,7 +68,9 @@
                                 <tr>
                                     <td>${orderitem.toString()}</td>
                                     <td>
-                                        <button type="submit" formaction="removesessionitem" name="orderitemstring" value="${orderitem.toString()}" class="btn btn-danger">x</button>
+                                        <button type="submit" formaction="removesessionitem" name="orderitemstring"
+                                                value="${orderitem.toString()}" class="btn btn-danger">x
+                                        </button>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -80,9 +82,15 @@
                         <br><br>
                         <td>Total price: ${sessionScope.totalSum}</td>
                         <br><br>
-                        <button type="submit" formaction="savereceipt" class="btn btn-secondary fw-bold">Save and continue</button>
-                        <br>
+                        <button type="submit" formaction="savereceipt" class="btn btn-secondary fw-bold">Save and
+                            continue
+                        </button>
+                        <br><br>
                         <p>${requestScope.msg}</p>
+                        <strong>
+                            Orders can not be altered once they are saved, but
+                            can always be removed from the Userpage.
+                        </strong>
                     </div>
                 </div>
                 <br><br>
