@@ -67,6 +67,9 @@
                             <c:forEach var="orderitem" items="${sessionScope.orderItemList}">
                                 <tr>
                                     <td>${orderitem.toString()}</td>
+                                    <td>
+                                        <button type="submit" formaction="removesessionitem" name="orderitemstring" value="${orderitem.toString()}" class="btn btn-danger">x</button>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>
