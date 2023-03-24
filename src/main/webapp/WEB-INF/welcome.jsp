@@ -17,13 +17,34 @@
         <p>You should be logged in now</p>
 
         <c:if test="${sessionScope.user != null}">
-            <p>You are logged in with the role of "${sessionScope.user.role}".</p>
+            <p>You are logged in with the role of "<b>${sessionScope.user.role}</b>".</p>
         </c:if>
 
-        <c:if test="${sessionScope.user == null}">
-            <p>You are not logged in yet. You can do it here: <a
-                    href="../login.jsp">Login</a></p>
-        </c:if>
+<%--        <c:if test="${sessionScope.user == null}">--%>
+<%--            <p>You are not logged in yet. You can do it here: </p>--%>
+<%--            <br/>--%>
+<%--            <a href="../login.jsp" class="btn btn-secondary fw-bold">Login</a>--%>
+<%--        </c:if>--%>
+
+        <div class="row mt-3">
+            <div class="col">
+                <div class="text-center">
+                    <form action="${pageContext.request.contextPath}/browse" method="get">
+                        <input type="submit" class="btn btn-secondary fw-bold" value="Browse Cupcakes"/>
+                    </form>
+                    <br/>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="text-center">
+                    <c:if test="${sessionScope.user == null}">
+                        <p>You are not logged in yet. You can do it here: </p>
+                        <a href="login.jsp" class="btn btn-secondary fw-bold">Login</a>
+                    </c:if>
+                </div>
+            </div>
+        </div>
 
     </jsp:body>
 
