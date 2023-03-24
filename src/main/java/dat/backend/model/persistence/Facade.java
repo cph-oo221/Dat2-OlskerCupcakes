@@ -42,9 +42,8 @@ public class Facade
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            throw new DatabaseException("Could not get receipts by idUser");
         }
-        return null;
     }
     // ****************************************************************************************************************
 
@@ -85,8 +84,6 @@ public class Facade
     // Receipt ********************************************************************************************************
     public static Receipt getReceiptById(int idReceipt, ConnectionPool connectionPool)
     {
-        // TODO: TESTING METHOD, IMPLEMENT DB
-
         try
         {
             return ReceiptMapper.getReceiptById(idReceipt,connectionPool);
@@ -101,7 +98,6 @@ public class Facade
 
     public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool)
     {
-        // TODO: TESTING METHOD, IMPLEMENT DB
         try
         {
            return OrderMapper.getOrderByReceiptId(idReceipt, connectionPool);
