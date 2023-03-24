@@ -5,10 +5,11 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-            Your orders
+            Your Orders
     </jsp:attribute>
 
     <jsp:attribute name="footer">
+        Your Orders
     </jsp:attribute>
 
     <jsp:body>
