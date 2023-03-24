@@ -36,6 +36,19 @@ public class Facade
     {
         return UserMapper.getAllUsers(connectionPool);
     }
+
+    public static List<Receipt> getReceiptsByIdUser(int idUser, ConnectionPool connectionPool) throws DatabaseException
+    {
+        try
+        {
+            return ReceiptMapper.getReceiptsByIdUser(idUser,connectionPool);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
     // ****************************************************************************************************************
 
     // Bottom *********************************************************************************************************
@@ -77,7 +90,16 @@ public class Facade
     {
         // TODO: TESTING METHOD, IMPLEMENT DB
 
-        return new Receipt(4, false);
+        try
+        {
+            return ReceiptMapper.getReceiptById(idReceipt,connectionPool);
+        }
+        catch (DatabaseException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+        //return new Receipt(4, false);
     }
 
     public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool)
