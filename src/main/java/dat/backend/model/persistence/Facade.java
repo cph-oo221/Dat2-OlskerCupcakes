@@ -126,7 +126,7 @@ public class Facade
         boolean couldAfford = UserMapper.purchase(idUser , price , connectionPool);
         if(!couldAfford)
         {
-            return couldAfford;
+            return !couldAfford;
         }
             try
             {
@@ -136,6 +136,6 @@ public class Facade
             {
                 e.printStackTrace();
             }
-        return true;
+        return couldAfford;
     }
 }
