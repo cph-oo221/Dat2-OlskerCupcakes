@@ -65,7 +65,7 @@ public class TopMapper
         ArrayList<Top> topList = new ArrayList<>();
         Logger.getLogger("web").log(Level.INFO, "");
 
-        Top top = null;
+        Top top;
 
         String sql = "SELECT * FROM top";
 
