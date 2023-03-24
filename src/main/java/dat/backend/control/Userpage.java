@@ -23,6 +23,8 @@ public class Userpage extends HttpServlet
     {
         User user = (User) request.getSession().getAttribute("user");
         List<Receipt> receiptList = null;
+        String msg = (String) request.getAttribute("msg");
+        request.setAttribute("msg", msg);
 
         try
         {
