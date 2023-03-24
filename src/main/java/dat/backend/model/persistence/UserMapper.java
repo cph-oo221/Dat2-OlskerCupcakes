@@ -15,7 +15,7 @@ class UserMapper
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        User user = null;
+        User user;
 
         String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
 
@@ -48,7 +48,7 @@ class UserMapper
     static User createUser(String email, String password, String role, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
-        User user = null;
+        User user;
         String sql = "insert into user (email, password, role) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {

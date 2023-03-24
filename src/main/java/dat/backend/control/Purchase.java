@@ -33,18 +33,18 @@ public class Purchase extends HttpServlet
         int idReceipt = Integer.parseInt(request.getParameter("idReceipt"));
         int total = Integer.parseInt(request.getParameter("total"));
 
-        String msg;
+        String msg = "";
         if (Facade.purchase(user,idReceipt, total, connectionPool))
         {
-           msg = "Purchase successful";
+           request.getSession().setAttribute("msg", msg);
+           request.getRequestDispatcher("WEB-INF/confirmed.jsp").forward(request, response);
         }
 
         else
         {
             msg = "Purchase denied. Not enough funds";
+            request.getSession().setAttribute("msg", msg);
+            response.sendRedirect("userpage");
         }
-
-        request.getSession().setAttribute("msg", msg);
-        response.sendRedirect("userpage");
     }
 }

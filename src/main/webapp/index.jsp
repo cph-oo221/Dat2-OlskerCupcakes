@@ -14,6 +14,22 @@
 
     <jsp:body>
 
+        <p>
+            We are a bakery shop, known for our delicious cupcakes. On this site you can place pick up orders
+            for our shop. You will receive an e-mail when the order is ready to pick up.
+            This usually takes about a week.
+        </p>
+        <p>
+            Navigate through the site with the navigation
+            bar at the top of the site.
+        </p>
+
+        <c:if test="${sessionScope.user == null}">
+            <strong>
+                Log in or create a new account to place orders
+            </strong>
+        </c:if>
+
         <div class="row mt-3">
             <c:if test="${sessionScope.user != null}">
                 <p>You are logged in with the role of "${sessionScope.user.role}".</p>
