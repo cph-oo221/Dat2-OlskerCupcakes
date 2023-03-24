@@ -37,6 +37,7 @@
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
+                                    <input type="text" hidden name="complete" value="${receipt.complete}">
                                     <input type="submit" class="btn btn-secondary" value="View order">
                                 </form>
                             </td>
@@ -64,6 +65,7 @@
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
+                                    <input type="text" hidden name="complete" value="${receipt.complete}">
                                     <input type="submit" class="btn btn-secondary" value="View order">
                                 </form>
                             </td>

@@ -32,6 +32,7 @@ public class Orders extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         int idReceipt = Integer.parseInt(request.getParameter("idReceipt"));
+        boolean complete = Boolean.parseBoolean(request.getParameter("complete"));
 
         ArrayList<OrderItem> orderItems = (ArrayList<OrderItem>) Facade.getOrderByReceiptId(idReceipt,connectionPool);
 
@@ -43,6 +44,9 @@ public class Orders extends HttpServlet
 
         request.setAttribute("orderItems", orderItems);
         request.setAttribute("total", total);
+        request.setAttribute("idReceipt", idReceipt);
+        request.setAttribute("complete",complete);
+
 
         request.getRequestDispatcher("WEB-INF/orders.jsp").forward(request, response);
     }
