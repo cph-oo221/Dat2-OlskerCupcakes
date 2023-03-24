@@ -139,9 +139,10 @@ class UserMapper
         }
     }
 
-    static boolean purchase(int idUser, int price, ConnectionPool connectionPool)
+    static boolean purchase(User user, int price, ConnectionPool connectionPool)
     {
         Logger.getLogger("web").log(Level.INFO, "");
+        int idUser = user.getIdUser();
 
         String sql = "SELECT balance FROM user WHERE idUser = ?";
         int balance = -1;
@@ -169,7 +170,9 @@ class UserMapper
                 {
                     int newBalance = balance - price;
                     updateBalance(idUser, newBalance, connectionPool);
+                    user.setBalance(newBalance);
                     return couldAfford = true;
+
                 } else
                 {
                     return couldAfford = false;

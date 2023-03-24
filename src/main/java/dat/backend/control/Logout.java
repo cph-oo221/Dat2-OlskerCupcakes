@@ -1,9 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.OrderItem;
-import dat.backend.model.persistence.ConnectionPool;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

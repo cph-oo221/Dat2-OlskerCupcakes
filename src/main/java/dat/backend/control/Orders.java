@@ -47,7 +47,6 @@ public class Orders extends HttpServlet
         request.setAttribute("idReceipt", idReceipt);
         request.setAttribute("complete",complete);
 
-
         request.getRequestDispatcher("WEB-INF/orders.jsp").forward(request, response);
     }
 }
