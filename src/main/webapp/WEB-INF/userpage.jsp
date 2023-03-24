@@ -28,7 +28,6 @@
                     <tr>
                         <td>${receipt.idReceipt}</td>
                         <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
-                        <td>${receipt.completed}</td>
 
 
                         <td>
