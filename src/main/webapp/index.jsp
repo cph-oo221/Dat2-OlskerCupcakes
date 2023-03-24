@@ -21,7 +21,7 @@
                     <c:if test="${sessionScope.user.role.equalsIgnoreCase('admin')}">
                         <div class="text-center">
                             <form action="AdminPanel" method="post">
-                                <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
+                                <input type="submit" class="btn btn-secondary btn-lg fw-bold" value="Admin Panel"/>
                             </form>
                         </div>
                         <br/>
@@ -33,7 +33,7 @@
             <div class="col">
                 <div class="text-center">
                     <form action="${pageContext.request.contextPath}/browse" method="get">
-                        <input type="submit" class="btn btn-secondary fw-bold" value="Browse Cupcakes"/>
+                        <input type="submit" class="btn btn-secondary btn-lg fw-bold" value="Browse Cupcakes"/>
                     </form>
                     <br/>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col">
                 <div class="text-center">
                     <c:if test="${sessionScope.user == null}">
-                        <a href="login.jsp" class="btn btn-secondary fw-bold">Login</a>
+                        <a href="login.jsp" class="btn btn-secondary btn-lg fw-bold">Login</a>
                     </c:if>
                 </div>
             </div>
