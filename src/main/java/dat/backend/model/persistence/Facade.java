@@ -33,6 +33,18 @@ public class Facade
     {
         return UserMapper.getAllUsers(connectionPool);
     }
+
+    public static List<Receipt> getReceiptsByIdUser(int idUser, ConnectionPool connectionPool) throws DatabaseException
+    {
+        try
+        {
+            return ReceiptMapper.getReceiptsByIdUser(idUser,connectionPool);
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException("Could not get receipts by idUser");
+        }
+    }
     // ****************************************************************************************************************
 
     // Bottom *********************************************************************************************************
@@ -72,14 +84,20 @@ public class Facade
     // Receipt ********************************************************************************************************
     public static Receipt getReceiptById(int idReceipt, ConnectionPool connectionPool)
     {
-        // TODO: TESTING METHOD, IMPLEMENT DB
-
-        return new Receipt(4, false);
+        try
+        {
+            return ReceiptMapper.getReceiptById(idReceipt,connectionPool);
+        }
+        catch (DatabaseException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+        //return new Receipt(4, false);
     }
 
     public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool)
     {
-        // TODO: TESTING METHOD, IMPLEMENT DB
         try
         {
            return OrderMapper.getOrderByReceiptId(idReceipt, connectionPool);

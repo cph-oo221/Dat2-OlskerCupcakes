@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.OrderItem;
+import dat.backend.model.entities.Receipt;
 import dat.backend.model.entities.User;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
@@ -31,18 +32,15 @@ public class Savereceipt extends HttpServlet
         if (user != null)
         {
             List<OrderItem> orderItemList = (List<OrderItem>) request.getSession().getAttribute("orderItemList");
-            int idReceipt;
 
             try
             {
-                if (orderItemList.size() > 1)
+                if (orderItemList.size() > 0)
                 {
-                    idReceipt = Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
-
-                    orderItemList = Facade.getOrderByReceiptId(idReceipt, connectionPool);
-
-                    request.setAttribute("orderItemList", orderItemList);
-                    request.getRequestDispatcher("WEB-INF/shoppingcart.jsp").forward(request, response);
+                    Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
+                    List<Receipt> receiptList = Facade.getReceiptsByIdUser(user.getIdUser(), connectionPool);
+                    request.setAttribute("receiptList", receiptList);
+                    request.getRequestDispatcher("WEB-INF/userpage.jsp").forward(request, response);
                 }
 
                 else

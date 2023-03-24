@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class ReceiptMapper
 {
-    static List<Receipt> getReceipts(int iduser, ConnectionPool connectionPool) throws DatabaseException, SQLException
+    static List<Receipt> getReceiptsByIdUser(int iduser, ConnectionPool connectionPool) throws DatabaseException, SQLException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
