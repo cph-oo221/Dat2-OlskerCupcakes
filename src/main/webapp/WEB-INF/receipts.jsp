@@ -55,9 +55,8 @@
                     <tr>
                         <td>${receipt.idReceipt}</td>
                         <td>${receipt.getiduser()}</td>
-                        <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
+                        <td>${receipt.timeOfOrder}</td>
                         <td>${receipt.completed}</td>
-
 
                         <td>
                             <form action="Orders" method="post">
@@ -67,10 +66,8 @@
                         </td>
                     </tr>
                 </c:forEach>
-
             </table>
         </div>
-
 
     </jsp:body>
 </t:pagetemplate>

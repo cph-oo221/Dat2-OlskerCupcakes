@@ -20,7 +20,6 @@
             </form>
         </div>
 
-
         <!-- TABLE FOR LIST OVER USERS -->
         <style>
             table

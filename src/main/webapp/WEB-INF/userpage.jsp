@@ -6,7 +6,7 @@
 <t:pagetemplate>
     <jsp:attribute name="header">
         <div class="text-center">
-         Shoppingcart
+         Your orders
         </div>
     </jsp:attribute>
 
@@ -18,22 +18,23 @@
         <div class="mt-3">
             <table class="table table-dark table-striped">
                 <tr>
+                    <th>Order Number</th>
                     <th>Time Of Order</th>
                     <td>Complete</td>
-                    <th>Get all items</th>
+                    <th>Actions</th>
                 </tr>
 
                 <c:forEach var="receipt" items="${requestScope.receiptList}">
                     <tr>
-                        <td>${receiptList.idReceipt}</td>
-                        <td>${receiptList.timeOfOrder}</td> <!-- maybe add a to string -->
-                        <td>${receiptList.completed}</td>
+                        <td>${receipt.idReceipt}</td>
+                        <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
+                        <td>${receipt.completed}</td>
 
 
                         <td>
                             <form action="Orders" method="post">
                                 <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
-                                <input type="submit" class="btn btn-secondary" value="Get Order Items">
+                                <input type="submit" class="btn btn-secondary" value="View order">
                             </form>
                         </td>
                     </tr>

@@ -20,13 +20,45 @@
             </form>
         </div>
 
+        <style>
+            table
+            {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-        <div class="text-start-2">
-            <p><b> Over view for: ${requestScope.editUser} </b></p>
-            <p><b>Password: ${requestScope.password}</b></p>
-            <p><b>Role: ${requestScope.role}</b></p>
-            <p><b>Balance:  ${requestScope.balance} kr.</b></p>
-            <p><b>User id: ${requestScope.userId}</b></p>
+            td, th
+            {
+                /*border: 1px solid #dddddd;*/
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even)
+            {
+                background-color: #dddddd;
+            }
+        </style>
+
+        <div class="mt-3">
+            <table class="table table-dark table-striped">
+                <tr>
+                    <th>User id</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <td>Role</td>
+                    <th>Balance</th>
+                </tr>
+
+                <tr>
+                    <td>${requestScope.userId}</td>
+                    <td>${requestScope.editUser}</td>
+                    <td>${requestScope.password}</td>
+                    <td>${requestScope.role}</td>
+                    <td>${requestScope.balance}</td>
+                </tr>
+            </table>
         </div>
 
         <div class="text-start mt-5">

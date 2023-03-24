@@ -14,24 +14,54 @@
 
     <jsp:body>
 
-        <p>Startcode for 2nd semester </p>
-
-        <c:if test="${sessionScope.user != null}">
-            <p>You are logged in with the role of "${sessionScope.user.role}".</p>
-
-            <c:if test="${sessionScope.user.role.equalsIgnoreCase('admin')}">
-                <div class="text-start">
-                    <form action="AdminPanel" method="post">
-                        <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
-                    </form>
+        <div class="row mt-3">
+            <c:if test="${sessionScope.user != null}">
+                <p>You are logged in with the role of "${sessionScope.user.role}".</p>
+                <div class="col">
+                    <c:if test="${sessionScope.user.role.equalsIgnoreCase('admin')}">
+                        <div class="text-center">
+                            <form action="AdminPanel" method="post">
+                                <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
+                            </form>
+                        </div>
+                        <br/>
+                        <br/>
+                    </c:if>
                 </div>
             </c:if>
-        </c:if>
 
-        <c:if test="${sessionScope.user == null}">
-            <p>You are not logged in yet. You can do it here: <a
-                    href="login.jsp">Login</a></p>
-        </c:if>
+            <div class="col">
+                <div class="text-center">
+                    <form action="${pageContext.request.contextPath}/browse" method="get">
+                        <input type="submit" class="btn btn-secondary fw-bold" value="Browse Cupcakes"/>
+                    </form>
+                    <br/>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="text-center">
+                    <c:if test="${sessionScope.user == null}">
+                        <a href="login.jsp" class="btn btn-secondary fw-bold">Login</a>
+                    </c:if>
+                </div>
+            </div>
+        </div>
+
+
+
+<%--        <div class="text-start">--%>
+<%--            <form action="${pageContext.request.contextPath}/browse" method="get">--%>
+<%--                <input type="submit" class="btn btn-secondary fw-bold" value="Browse Cupcakes"/>--%>
+<%--            </form>--%>
+<%--            <br/>--%>
+<%--        </div>--%>
+
+<%--        <div class="text-start">--%>
+<%--            <c:if test="${sessionScope.user == null}">--%>
+<%--                <a href="login.jsp" class="btn btn-secondary fw-bold">Login</a>--%>
+<%--            </c:if>--%>
+<%--        </div>--%>
 
     </jsp:body>
 
