@@ -36,7 +36,7 @@ public class Savereceipt extends HttpServlet
 
             try
             {
-                if (orderItemList.size() > 1)
+                if (orderItemList.size() > 0)
                 {
                     Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
                     List<Receipt> receiptList = Facade.getReceiptsByIdUser(user.getIdUser(), connectionPool);
