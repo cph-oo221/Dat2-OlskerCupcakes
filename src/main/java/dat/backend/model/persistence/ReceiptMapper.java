@@ -163,6 +163,27 @@ public class ReceiptMapper
         return 0;
     }
 
+    static int deleteReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
+    {
+        if(Facade.deleteAllOrdersFromReceipt(idReceipt, connectionPool)>0)
+        {
+            Logger.getLogger("web").log(Level.INFO, "");
+            String sql = "DELETE FROM receipt WHERE idReceipt = ?";
+            try (Connection connection = connectionPool.getConnection())
+            {
+                try (PreparedStatement ps = connection.prepareStatement(sql))
+                {
+                    ps.setInt(1, idReceipt);
+                    return ps.executeUpdate();
+                }
+            }
+        }
+        else
+        {
+            return 0; //nothing deleted
+        }
+    }
+
     static void toggleReceipt(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");

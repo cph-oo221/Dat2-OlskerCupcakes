@@ -45,4 +45,33 @@ public class OrderMapper
             throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
         }
     }
+
+    static int deleteOrder(int idOrder, ConnectionPool connectionPool) throws SQLException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "DELETE FROM order WHERE idOrder = ?";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, idOrder);
+                return ps.executeUpdate();
+            }
+        }
+    }
+
+    static int deleteAllFromReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "DELETE FROM order WHERE idReceipt = ?";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, idReceipt);
+                return ps.executeUpdate();
+            }
+        }
+    }
 }

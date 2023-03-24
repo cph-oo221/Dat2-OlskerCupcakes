@@ -3,6 +3,7 @@ package dat.backend.model.persistence;
 
 import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
+import org.junit.jupiter.api.Order;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -136,5 +137,23 @@ public class Facade
             }
         }
         return false;
+    }
+
+    public static int deleteAllOrdersFromReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
+    {
+        return OrderMapper.deleteAllFromReceipt(idReceipt, connectionPool);
+    }
+
+    public static int deleteReceipt(int idReceipt, ConnectionPool connectionPool)
+    {
+        try
+        {
+            return ReceiptMapper.deleteReceipt(idReceipt, connectionPool);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
