@@ -11,6 +11,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="footer">
+        Shoppingcart
     </jsp:attribute>
 
     <jsp:body>
