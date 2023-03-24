@@ -14,11 +14,11 @@
 
     <jsp:body>
         <c:if test="${sessionScope.user.role.equalsIgnoreCase('admin')}">
-        <div class="text-start">
-            <form action="AdminPanel" method="post">
-                <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
-            </form>
-        </div>
+            <div class="text-start">
+                <form action="AdminPanel" method="post">
+                    <input type="submit" class="btn btn-secondary fw-bold" value="Admin Panel"/>
+                </form>
+            </div>
         </c:if>
 
         <c:if test="${sessionScope.user.role.equalsIgnoreCase('user')}">
@@ -30,22 +30,19 @@
         </c:if>
 
         <style>
-            table
-            {
+            table {
                 font-family: arial, sans-serif;
                 border-collapse: collapse;
                 width: 100%;
             }
 
-            td, th
-            {
+            td, th {
                 /*border: 1px solid #dddddd;*/
                 text-align: left;
                 padding: 8px;
             }
 
-            tr:nth-child(even)
-            {
+            tr:nth-child(even) {
                 background-color: #dddddd;
             }
         </style>
@@ -54,31 +51,24 @@
             <table class="table table-dark table-striped">
                 <tr>
                     <th>Orders</th>
+                    <th>Price</th>
                 </tr>
 
                 <c:forEach var="items" items="${requestScope.orderItems}">
-                    <tr>
-                        <td>${items.toString()}</td>
-                    </tr>
+                <tr>
+                    <td>${items.toString()}</td>
+                    <td>${items.totalPrice}</td>
+                </tr>
                 </c:forEach>
 
                 <tr>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="col">
-                                total price = ${requestScope.total}
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
+                    <td></td>
+                    <td class="fw-bold">Total Price: ${requestScope.total}</td>
                 </tr>
-
             </table>
+        </div>
+
+
         </div>
 
     </jsp:body>

@@ -25,7 +25,6 @@
                 <tr>
                     <th>Order Number</th>
                     <th>Time Of Order</th>
-                    <td>Complete</td>
                     <th>Actions</th>
                 </tr>
 
@@ -34,9 +33,6 @@
                         <tr>
                             <td>${receipt.idReceipt}</td>
                             <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
-                            <td>${receipt.complete}</td>
-
-
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
@@ -56,7 +52,6 @@
                 <tr>
                     <th>Order Number</th>
                     <th>Time Of Order</th>
-                    <td>Complete</td>
                     <th>Actions</th>
                 </tr>
 
@@ -65,9 +60,6 @@
                         <tr>
                             <td>${receipt.idReceipt}</td>
                             <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
-                            <td>${receipt.complete}</td>
-
-
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
