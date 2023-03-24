@@ -7,21 +7,21 @@ public class Receipt
 {
     private int iduser;
     private Timestamp timeOfOrder;
-    private Boolean completed;
+    private boolean complete;
     private int idReceipt;
 
-    public Receipt(int idReceipt, int iduser, Timestamp timeOfOrder, Boolean completed) {
+    public Receipt(int idReceipt, int iduser, Timestamp timeOfOrder, Boolean complete) {
         this.idReceipt = idReceipt;
         this.iduser = iduser;
         this.timeOfOrder = timeOfOrder;
-        this.completed = completed;
+        this.complete = complete;
     }
 
-    public Receipt(int iduser, boolean completed)
+    public Receipt(int iduser, boolean complete)
     {
         // TESTING CONSTRUCTOR
         this.iduser = iduser;
-        this.completed = completed;
+        this.complete = complete;
     }
 
     public int getiduser()
@@ -34,9 +34,9 @@ public class Receipt
         return timeOfOrder;
     }
 
-    public boolean getCompleted()
+    public boolean getComplete()
     {
-        return completed;
+        return complete;
     }
 
     public int getIdReceipt()
@@ -50,13 +50,13 @@ public class Receipt
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Receipt receipt = (Receipt) o;
-        return Objects.equals(iduser, receipt.iduser) && Objects.equals(timeOfOrder, receipt.timeOfOrder) && Objects.equals(completed, receipt.completed);
+        return Objects.equals(iduser, receipt.iduser) && Objects.equals(timeOfOrder, receipt.timeOfOrder) && Objects.equals(complete, receipt.complete);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(iduser, timeOfOrder, completed);
+        return Objects.hash(iduser, timeOfOrder, complete);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Receipt
         return "Receipt{" +
                 "iduser=" + iduser +
                 ", timeOfOrder=" + timeOfOrder +
-                ", completed=" + completed +
+                ", completed=" + complete +
                 ", idReceipt=" + idReceipt +
                 '}';
     }
