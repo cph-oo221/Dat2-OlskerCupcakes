@@ -34,7 +34,7 @@ public class Receipt
         return timeOfOrder;
     }
 
-    public boolean getcomplete()
+    public boolean getComplete()
     {
         return complete;
     }

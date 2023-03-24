@@ -6,7 +6,7 @@
 <t:pagetemplate>
     <jsp:attribute name="header">
         <div class="text-center">
-         Your orders
+            Your orders
         </div>
     </jsp:attribute>
 
@@ -16,6 +16,7 @@
     <jsp:body>
 
         <div class="mt-3">
+            <h3>Incomplete orders</h3>
             <table class="table table-dark table-striped">
                 <tr>
                     <th>Order Number</th>
@@ -25,18 +26,52 @@
                 </tr>
 
                 <c:forEach var="receipt" items="${requestScope.receiptList}">
-                    <tr>
-                        <td>${receipt.idReceipt}</td>
-                        <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
+                    <c:if test="${receipt.complete == false}">
+                        <tr>
+                            <td>${receipt.idReceipt}</td>
+                            <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
+                            <td>${receipt.complete}</td>
 
 
-                        <td>
-                            <form action="Orders" method="post">
-                                <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
-                                <input type="submit" class="btn btn-secondary" value="View order">
-                            </form>
-                        </td>
-                    </tr>
+                            <td>
+                                <form action="Orders" method="post">
+                                    <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
+                                    <input type="submit" class="btn btn-secondary" value="View order">
+                                </form>
+                            </td>
+                        </tr>
+                    </c:if>
+                </c:forEach>
+
+            </table>
+        </div>
+
+        <div class="mt-3">
+            <h3>Complete orders</h3>
+            <table class="table table-dark table-striped">
+                <tr>
+                    <th>Order Number</th>
+                    <th>Time Of Order</th>
+                    <td>Complete</td>
+                    <th>Actions</th>
+                </tr>
+
+                <c:forEach var="receipt" items="${requestScope.receiptList}">
+                    <c:if test="${receipt.complete == true}">
+                        <tr>
+                            <td>${receipt.idReceipt}</td>
+                            <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
+                            <td>${receipt.complete}</td>
+
+
+                            <td>
+                                <form action="Orders" method="post">
+                                    <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
+                                    <input type="submit" class="btn btn-secondary" value="View order">
+                                </form>
+                            </td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
 
             </table>
