@@ -70,11 +70,14 @@
                         <div class="row">
                             <div class="col">
                                 <div class="col">
-                                    <form action="Purchase" method="post">
+                                    <c:if test="${requestScope.complete == false}">
+                                    <form action="purchase" method="post">
+
                                     <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
                                     <input type="text" value="${requestScope.total}" hidden name="total">
                                         <input type="submit" value="purchase">
                                     </form>
+                                    </c:if>
                                 </div>
                                 </div>
                             </div>

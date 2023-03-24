@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 
-@WebServlet(name = "Purchase", value = "/Purchase")
+@WebServlet(name = "Purchase", value = "/purchase")
 public class Purchase extends HttpServlet
 {
     ConnectionPool connectionPool;
@@ -37,6 +37,6 @@ public class Purchase extends HttpServlet
 
         Facade.purchase(idUser,idReceipt, total, connectionPool);
 
-        request.getRequestDispatcher("WEB-INF/userpage.jsp").forward(request,response);
+        response.sendRedirect("userpage");
     }
 }
