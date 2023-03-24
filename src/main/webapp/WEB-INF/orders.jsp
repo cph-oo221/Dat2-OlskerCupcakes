@@ -59,6 +59,7 @@
                 <c:forEach var="items" items="${requestScope.orderItems}">
                     <tr>
                         <td>${items.toString()}</td>
+
                     </tr>
                 </c:forEach>
 
@@ -68,6 +69,12 @@
                             <div class="col">
                                 <div class="col">
                                 total price = ${requestScope.total}
+                                    <form action="Purchase" method="post">
+                                    <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
+                                    <input type="text" value="${requestScope.total}" hidden name="total">
+                                        <input type="submit" value="purchase">
+                                    </form>
+                                </div>
                                 </div>
                             </div>
 
