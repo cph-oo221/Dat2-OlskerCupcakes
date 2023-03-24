@@ -1,7 +1,6 @@
 package dat.backend.model.persistence;
 
 import dat.backend.model.entities.Bottom;
-import dat.backend.model.entities.Top;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.*;
@@ -13,7 +12,7 @@ public class BottomMapper {
     static Bottom getBottom(String name, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        Bottom bottom = null;
+        Bottom bottom;
 
         String sql = "SELECT * FROM bottom WHERE name = ?";
 
@@ -23,7 +22,6 @@ public class BottomMapper {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     int idBottom = rs.getInt("idBottom");
-                    String BottomName = rs.getString("name");
                     int price = rs.getInt("price");
                     bottom = new Bottom(idBottom, name, price);
                 } else {
@@ -39,7 +37,7 @@ public class BottomMapper {
     static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws DatabaseException, SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        Bottom bottom = null;
+        Bottom bottom;
 
         String sql = "SELECT * FROM bottom WHERE idBottom = ?";
 

@@ -1,8 +1,6 @@
 package dat.backend.model.persistence;
 
-import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Top;
-import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.*;
@@ -15,7 +13,7 @@ public class TopMapper
     static Top getTop(String name, ConnectionPool connectionPool) throws DatabaseException, SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        Top top = null;
+        Top top;
 
         String sql = "SELECT * FROM top WHERE name = ?";
 
@@ -25,7 +23,6 @@ public class TopMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     int idTop = rs.getInt("idTop");
-                    String topName = rs.getString("name");
                     int price = rs.getInt("price");
                     top = new Top(idTop, name, price);
                 } else {
@@ -41,7 +38,7 @@ public class TopMapper
     static Top getTopById(int idTop, ConnectionPool connectionPool) throws DatabaseException, SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
 
-        Top top = null;
+        Top top;
 
         String sql = "SELECT * FROM top WHERE idTop = ?";
 
