@@ -35,7 +35,8 @@ public class Receipts extends HttpServlet
         try
         {
             receipts = (ArrayList<Receipt>) Facade.getAllReceipts(connectionPool);
-        } catch (DatabaseException e)
+        }
+        catch (DatabaseException e)
         {
             e.printStackTrace();
         }
