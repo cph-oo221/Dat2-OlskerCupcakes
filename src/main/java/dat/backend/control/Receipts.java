@@ -26,6 +26,7 @@ public class Receipts extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        doPost(request,response); //Request.redirect() rammer altid doGet, så vi sender den lige videre.
     }
 
     @Override
