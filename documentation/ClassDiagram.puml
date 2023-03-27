@@ -1,5 +1,6 @@
 @startuml
 'https://plantumautonumber
+!pragma layout smetana 
 
 package "Control" #69bac6
 {
