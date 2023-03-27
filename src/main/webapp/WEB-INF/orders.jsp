@@ -84,6 +84,7 @@
 
 
             <c:if test="${requestScope.complete == false}">
+            <br/>
             <form action="deleteReceipt" method="post">
 
                 <input type="text" value="${requestScope.idReceipt}" hidden name="idReceipt">
