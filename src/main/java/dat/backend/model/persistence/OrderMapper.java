@@ -60,7 +60,7 @@ public class OrderMapper
         }
     }*/
 
-    static int deleteAllFromReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
+    static int deleteAllOrdersFromReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
