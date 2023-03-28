@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.Receipt;
+import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
@@ -33,9 +34,11 @@ public class Receipts extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         ArrayList<Receipt> receipts = null;
+        ArrayList<User> users = null;
         try
         {
             receipts = (ArrayList<Receipt>) Facade.getAllReceipts(connectionPool);
+            users = (ArrayList<User>) Facade.getAllUsers(connectionPool);
         }
         catch (DatabaseException e)
         {
@@ -43,6 +46,7 @@ public class Receipts extends HttpServlet
         }
 
         request.setAttribute("receipts", receipts);
+        request.setAttribute("users", users);
 
         request.getRequestDispatcher("WEB-INF/receipts.jsp").forward(request, response);
     }
