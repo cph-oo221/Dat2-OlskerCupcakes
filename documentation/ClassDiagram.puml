@@ -251,18 +251,17 @@ package Webserver <<Cloud>>
    Facade o-- TopMapper
    Facade o-- UserMapper
 
-   Facade -- Additem
-   Facade -- AdminPanel
-   Facade -- Browse
-   Facade -- DeleteReceipt
-   Facade -- EditUser
-   Facade -- Login
-   Facade -- Orders
-   Facade -- Purchase
-   Facade -- Receipts
-   Facade -- Savereceipt
-   Facade -- SignUp
-   Facade -- Userpage
+   Facade -up- Additem
+   Facade -up- AdminPanel
+   Facade -up- Browse
+   Facade -up- EditUser
+   Facade -up- Login
+   Facade -up- Orders
+   Facade -up- Purchase
+   Facade -up- Receipts
+   Facade -up- Savereceipt
+   Facade -up- SignUp
+   Facade -up- Userpage
 
    Facade *-- DatabaseException
 
