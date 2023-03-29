@@ -1,0 +1,300 @@
+@startuml
+'https://plantumautonumber
+!pragma layout smetana
+
+package "Control" #69bac6
+{
+     class Additem
+     {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        - ConnectionPool connectionPool
+     }
+      class AdminPanel
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        +init():void
+        - ConnectionPool connectionPool
+      }
+      class Browse
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        +serOrderItemList(List<OrderItem>):void
+         - ConnectionPool connectionPool
+         - List<OrderItem> orderItemList
+      }
+      class DeleteReceipt
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        - ConnectionPool connectionPool
+      }
+
+      class EditUser
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        +init():void
+
+      }
+      class Login
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        +init():void
+        - ConnectionPool connectionPool
+      }
+      class Logout
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+      }
+      class Orders
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        +init():void
+        - ConnectionPool connectionPool
+      }
+      class Purchase
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        +init():void
+        - ConnectionPool connectionPool
+      }
+      class Receipts
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        +init():void
+        - ConnectionPool connectionPool
+      }
+      class RemoveSessionItem
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+      }
+      class Savereceipt
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        - ConnectionPool connectionPool
+      }
+      class SignUp
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        + init():void
+        - ConnectionPool connectionPool
+      }
+      class Userpage
+      {
+        +doGet(HttpServletRequest, HttpServletResponse:void
+        +doPost(HttpServletRequest, HttpServletResponse:void
+        - ConnectionPool connectionPool
+      }
+}
+package "Model" #bdbe8f
+{
+    package "Entities" #96de93
+    {
+       class Bottom
+       {
+         - int idBottom
+         - String name
+         - int price
+       }
+       class OrderItem
+       {
+         - int amount
+         - Bottom bottom
+         - Top top
+       }
+       class Receipt
+       {
+         - boolean complete
+         - int idReceipt
+         - int idUser
+         - Timestamp timeOfOrder
+       }
+       class Top
+       {
+         - int idTop
+         - String name
+         - int price
+       }
+       class User
+       {
+         - int balance
+         - String email
+         - int idUser
+         - String password
+         - String role
+       }
+    }
+
+    package "Config" #dadc8d
+    {
+        class ApplicationStart
+        {
+            + contextDestroyed(ServletContextEvent):void
+            + contextInitialized(ServletConextEvent):void
+            + getConnectionPool():ConnectionPool
+            + unregisterJDBCdrivers():void
+            - ConnectionPool connectionPool
+
+        }
+    }
+
+    package "Exceptions" #683636
+    {
+        Exception DatabaseException
+    }
+
+     package "Persistence" #dea9fc
+    {
+        class BottomMapper
+        {
+            # getAllBottoms(ConnectionPool):ArrayList<Bottom>
+            # getBottom(String, ConectionPool:Bottom
+            # getBottomById(int, ConnectionPool):Bottom
+        }
+        class ConnectionPool
+        {
+            + close():void
+            + getConnection():Connection
+            - HikariDataSource ds
+            - String PASSWORD
+            - String URL
+            - String USER
+        }
+        class Facade
+        {
+            + createReceipt(int, List<OrderItem>, ConnectionPool):int
+            + createUser(String, String, String, ConnectionPool):User
+            + deleteAllOrdersFromReceipt(int, ConnectionPool):int
+            + deleteReceipt(int, ConnectionPool):int
+            + getAllReceipts(ConnectionPool):List<Receipt>
+            + getAllUsers(ConnectionPool):List<Users>
+            + getBottomById(int, ConnectionPool):Bottom
+            + getBottoms(ConnectionPool):List<Bottoms>
+            + getOrderByReceiptId(int, ConnectionPool):List<OrderItem>
+            + getReceiptById(int, ConnectionPool):Receipt
+            + getReceiptsByIdUser(int, ConnectionPool):List<Receipt>
+            + getTopById(int, ConnectionPool):Top
+            + getTops(ConnectionPool):List<Top>
+            + login(String, String, ConnectionPool):User
+            + purchase(User, int, int, ConnectionPool:boolean
+            + updateBalance(int, int, ConnectionPool):void
+        }
+        class OrderMapper
+        {
+            # deleteAllFromReceipt(int, ConnectionPool):int
+            # getOrderByReceiptId(int, ConnectionPool):List<OrderItem>
+        }
+        class ReceiptMapper
+        {
+            # createReceipt(int, List<OrderItem>, ConnectionPool):int
+            # deleteReceipt(int, ConnectionPool):int
+            # getAllReceipts(ConnectionPool):List<Receipt>
+            # getReceiptById(int, ConnectionPool):Receipt
+            # getReceiptsByIdUser(int, ConnectionPool):List<Receipt>
+            # toggleReceipt(int, ConnectionPool):void
+        }
+        class TopMapper
+        {
+            # createTop(String, it, ConnectionPool):Top
+            # getAllTops(ConnectionPool):List<Top>
+            # getTop(String, ConnectionPool):Top
+            # getTopById(int, ConnectionPool):Top
+        }
+        class UserMapper
+        {
+            # createUser(String, String, String, ConnectionPool):User
+            # getAllUsers(ConnectionPool):List<Users>
+            # login(String, String, ConnectionPool):User
+            # purchase(User, int, int, ConnectionPool:boolean
+            # updateBalance(int, int, ConnectionPool):void
+        }
+    }
+}
+
+package Database <<Database>>
+{
+   entity MySql
+}
+
+package Webserver <<Cloud>>
+{
+  entity Tomcat9
+}
+
+   ApplicationStart *-- ConnectionPool
+   EditUser -- ApplicationStart
+   Login -- ApplicationStart
+   Additem -- ApplicationStart
+   AdminPanel -- ApplicationStart
+   Browse -- ApplicationStart
+   Orders -- ApplicationStart
+   DeleteReceipt -- ApplicationStart
+   Purchase -- ApplicationStart
+   Receipts -- ApplicationStart
+   Savereceipt -- ApplicationStart
+   SignUp -- ApplicationStart
+   Userpage -- ApplicationStart
+
+   Facade o-- BottomMapper
+   Facade o-- OrderMapper
+   Facade o-- ReceiptMapper
+   Facade o-- TopMapper
+   Facade o-- UserMapper
+
+   Facade -up- Additem
+   Facade -up- AdminPanel
+   Facade -up- Browse
+   Facade -up- EditUser
+   Facade -up- Login
+   Facade -up- Orders
+   Facade -up- Purchase
+   Facade -up- Receipts
+   Facade -up- Savereceipt
+   Facade -up- SignUp
+   Facade -up- Userpage
+
+   Facade *-- DatabaseException
+
+   OrderItem *-- Top
+   OrderItem *-- Bottom
+
+   BottomMapper -- Bottom
+   TopMapper -- Top
+   OrderMapper -- OrderItem
+   UserMapper -- User
+   ReceiptMapper -- Receipt
+
+   MySql -- BottomMapper
+   MySql -- OrderMapper
+   MySql -- ReceiptMapper
+   MySql -- TopMapper
+   MySql -- UserMapper
+
+   Tomcat9 --> Additem
+   Tomcat9 --> AdminPanel
+   Tomcat9 --> Browse
+   Tomcat9 --> DeleteReceipt
+   Tomcat9 --> EditUser
+   Tomcat9 --> Login
+   Tomcat9 --> Logout
+   Tomcat9 --> Orders
+   Tomcat9 --> Purchase
+   Tomcat9 --> Receipts
+   Tomcat9 --> RemoveSessionItem
+   Tomcat9 --> Savereceipt
+   Tomcat9 --> SignUp
+   Tomcat9 --> Userpage
+
+
+@enduml

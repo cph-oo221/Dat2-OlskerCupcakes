@@ -15,14 +15,11 @@ public class Logout extends HttpServlet
 {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
-        System.out.println("her");
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        System.out.println(session.getAttribute("orderItemList"));
         Browse.setOrderItemList(new ArrayList<>());
 
         session.setAttribute("orderItemList", new ArrayList<OrderItem>());
-        System.out.println(session.getAttribute("orderItemList"));
         session.setAttribute("user", null);
 
         session.invalidate();

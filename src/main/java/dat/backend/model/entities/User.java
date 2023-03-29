@@ -84,10 +84,4 @@ public class User
                 ", rolle='" + role + '\'' +
                 '}';
     }
-
-    public int getId()
-    {
-        return -1;
-    }
-
 }

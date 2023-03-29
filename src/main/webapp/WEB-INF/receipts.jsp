@@ -46,8 +46,9 @@
                 <tr>
                     <th>Id Receipt</th>
                     <th>Id user</th>
+                    <th>E-mail</th>
                     <th>Time Of Order</th>
-                    <td>Complete</td>
+                    <th>Complete</th>
                     <th>Get all items</th>
                 </tr>
 
@@ -55,6 +56,13 @@
                     <tr>
                         <td>${receipt.idReceipt}</td>
                         <td>${receipt.getiduser()}</td>
+
+                        <c:forEach var="user" items="${requestScope.users}">
+                            <c:if test="${user.idUser == receipt.getiduser()}">
+                                <td>${user.username}</td>
+                            </c:if>
+                        </c:forEach>
+
                         <td>${receipt.timeOfOrder}</td>
                         <td>${receipt.complete}</td>
 
