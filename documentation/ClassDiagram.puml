@@ -206,7 +206,6 @@ package "Model" #bdbe8f
         }
         class TopMapper
         {
-            # createTop(String, it, ConnectionPool):Top
             # getAllTops(ConnectionPool):List<Top>
             # getTop(String, ConnectionPool):Top
             # getTopById(int, ConnectionPool):Top

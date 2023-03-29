@@ -18,8 +18,10 @@ public class BottomMapper
 
         String sql = "SELECT * FROM bottom WHERE name = ?";
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
                 ps.setString(1, name);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
@@ -32,7 +34,8 @@ public class BottomMapper
                     throw new DatabaseException("No Bottom is named that");
                 }
             }
-        } catch (SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new DatabaseException(ex, "Error getting bottom. Something went wrong with the database");
         }
         return bottom;
