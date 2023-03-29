@@ -31,7 +31,6 @@
 
             td, th
             {
-                /*border: 1px solid #dddddd;*/
                 text-align: left;
                 padding: 8px;
             }
