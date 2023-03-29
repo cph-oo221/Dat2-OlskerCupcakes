@@ -35,16 +35,17 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <%--                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>--%>
+
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/browse">Browse</a>
                     <c:if test="${sessionScope.user != null }">
                     <a class="nav-item nav-link " href="${pageContext.request.contextPath}/userpage">Userpage</a>
-                        <!-- Link sends you to the logout servlet -->
                     </c:if>
+
                     <c:if test="${sessionScope.user == null }">
                         <!-- Link sends you to the login jsp side -->
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
+
                     <c:if test="${sessionScope.user != null }">
                         <!-- Link sends you to the logout servlet -->
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
@@ -59,7 +60,6 @@
 <div id="body" class="container mt-4" style="min-height: 400px;">
     <div class="text-end">
         <c:if test="${sessionScope.user != null }">
-            <!-- Link sends you to the logout servlet -->
             <p>${sessionScope.user.username} <br/>
                 Balance: ${sessionScope.user.balance}
             </p>
