@@ -65,19 +65,6 @@
         </div>
 
 
-        <%--        <div class="text-start">--%>
-        <%--            <form action="${pageContext.request.contextPath}/browse" method="get">--%>
-        <%--                <input type="submit" class="btn btn-secondary fw-bold" value="Browse Cupcakes"/>--%>
-        <%--            </form>--%>
-        <%--            <br/>--%>
-        <%--        </div>--%>
-
-        <%--        <div class="text-start">--%>
-        <%--            <c:if test="${sessionScope.user == null}">--%>
-        <%--                <a href="login.jsp" class="btn btn-secondary fw-bold">Login</a>--%>
-        <%--            </c:if>--%>
-        <%--        </div>--%>
-
     </jsp:body>
 
 </t:pagetemplate>
