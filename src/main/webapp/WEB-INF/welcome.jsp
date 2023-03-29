@@ -20,11 +20,6 @@
             <p>You are logged in with the role of "<b>${sessionScope.user.role}</b>".</p>
         </c:if>
 
-<%--        <c:if test="${sessionScope.user == null}">--%>
-<%--            <p>You are not logged in yet. You can do it here: </p>--%>
-<%--            <br/>--%>
-<%--            <a href="../login.jsp" class="btn btn-secondary fw-bold">Login</a>--%>
-<%--        </c:if>--%>
 
         <div class="row mt-3">
             <div class="col">
