@@ -10,7 +10,7 @@
 ## Hovedindhold af aflevering:
 
 ### Rapport
-* Her er vores **[Rapport.pdf]()**
+* Her er vores **[Rapport.pdf](documentation/Olsker%20Cupcakes%20-%20et%20cupcake%20projekt.pdf)**
 
 ### Database:
 * EER diagram: **[EER](src/main/resources/EER.png)**
