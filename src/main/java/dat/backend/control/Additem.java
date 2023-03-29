@@ -38,16 +38,22 @@ public class Additem extends HttpServlet
         try
         {
             bottom = Facade.getBottomById(idBottom, connectionPool);
-        } catch (SQLException | DatabaseException e) {
-            e.printStackTrace();
+        }
+        catch (DatabaseException e)
+        {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         Top top = null;
 
         try
         {
             top = Facade.getTopById(idTop, connectionPool);
-        } catch (SQLException | DatabaseException e) {
-            e.printStackTrace();
+        }
+        catch (DatabaseException e)
+        {
+           request.setAttribute("errormessage", e.getMessage());
+           request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
         OrderItem orderItem = new OrderItem(bottom, top, amount);

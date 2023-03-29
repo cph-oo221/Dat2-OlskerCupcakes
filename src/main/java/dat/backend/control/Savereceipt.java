@@ -51,9 +51,10 @@ public class Savereceipt extends HttpServlet
                     request.getRequestDispatcher("WEB-INF/browse.jsp").forward(request, response);
                 }
             }
-            catch (Exception throwables)
+            catch (Exception e)
             {
-                throwables.printStackTrace();
+                request.setAttribute("errormessage", e.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
             }
 
         } else

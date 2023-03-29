@@ -42,117 +42,119 @@ public class Facade
         }
         catch (SQLException e)
         {
-            throw new DatabaseException("Could not get receipts by idUser");
+            throw new DatabaseException(e.getMessage());
         }
     }
     // ****************************************************************************************************************
 
     // Bottom *********************************************************************************************************
-    public static ArrayList<Bottom> getBottoms(ConnectionPool connectionPool) throws DatabaseException {
-
-         return BottomMapper.getAllBottoms(connectionPool);
-
-        /*ArrayList<Bottom> bottoms = new ArrayList<>();
-        bottoms.add(new Bottom(1, "ChocolateTest", 5));
-        bottoms.add(new Bottom(2, "VanillaTest", 5));
-        bottoms.add(new Bottom(3, "NutmegTest", 5));
-        return bottoms;*/
-
+    public static ArrayList<Bottom> getBottoms(ConnectionPool connectionPool) throws DatabaseException
+    {
+        return BottomMapper.getAllBottoms(connectionPool);
     }
 
-    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws SQLException, DatabaseException {
-        return BottomMapper.getBottomById(idBottom,connectionPool);
-
-       // return new Bottom(1, "Chocolate", 5);
+    public static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws DatabaseException
+    {
+        try
+        {
+            return BottomMapper.getBottomById(idBottom,connectionPool);
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException(e.getMessage());
+        }
     }
     // ****************************************************************************************************************
 
 
-    // Top ********************************
+    // Top ************************************************************************************************************
     public static ArrayList<Top> getTops(ConnectionPool connectionPool) throws DatabaseException
     {
          return TopMapper.getAllTops(connectionPool);
     }
 
-    public static Top getTopById(int idTop, ConnectionPool connectionPool) throws SQLException, DatabaseException
+    public static Top getTopById(int idTop, ConnectionPool connectionPool) throws DatabaseException
     {
-        return TopMapper.getTopById(idTop,connectionPool);
+        try
+        {
+            return TopMapper.getTopById(idTop,connectionPool);
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException(e.getMessage());
+        }
     }
     // ****************************************************************************************************************
 
 
     // Receipt ********************************************************************************************************
-    public static Receipt getReceiptById(int idReceipt, ConnectionPool connectionPool)
+    public static Receipt getReceiptById(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
     {
         try
         {
             return ReceiptMapper.getReceiptById(idReceipt,connectionPool);
         }
-        catch (DatabaseException | SQLException e)
+        catch (SQLException e)
         {
-            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
         }
-        return null;
-        //return new Receipt(4, false);
     }
 
-    public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool)
+    public static List<OrderItem> getOrderByReceiptId(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
     {
         try
         {
            return OrderMapper.getOrderByReceiptId(idReceipt, connectionPool);
-        } catch (DatabaseException | SQLException e)
-        {
-            e.printStackTrace();
         }
-        return null;
+        catch (SQLException e)
+        {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
-    public static int createReceipt(int idUser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception
+    public static int createReceipt(int idUser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws DatabaseException
     {
-        return ReceiptMapper.createReceipt(idUser, orderItemList, connectionPool);
+        try
+        {
+            return ReceiptMapper.createReceipt(idUser, orderItemList, connectionPool);
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException(e.getMessage());
+        }
     }
-    // ****************************************************************************************************************
-    // ************************************
-
 
     public static List<Receipt> getAllReceipts(ConnectionPool connectionPool) throws DatabaseException
     {
         return ReceiptMapper.getAllReceipts(connectionPool);
     }
 
-    public static boolean purchase(User user , int idReceipt , int price , ConnectionPool connectionPool)
+    public static boolean purchase(User user , int idReceipt , int price , ConnectionPool connectionPool) throws DatabaseException
     {
         if (UserMapper.purchase(user , price , connectionPool))
         {
-            try
-            {
-                ReceiptMapper.toggleReceipt(idReceipt, connectionPool);
-                return true;
-            }
-            catch (DatabaseException e)
-            {
-                e.printStackTrace();
-            }
+
+            ReceiptMapper.toggleReceipt(idReceipt, connectionPool);
+            return true;
         }
         return false;
     }
 
-    public static int deleteAllOrdersFromReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
-    {
-        return OrderMapper.deleteAllOrdersFromReceipt(idReceipt, connectionPool);
-    }
-
-    public static int deleteReceipt(int idReceipt, ConnectionPool connectionPool)
+    public static int deleteAllOrdersFromReceipt(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
     {
         try
         {
-            return ReceiptMapper.deleteReceipt(idReceipt, connectionPool);
+            return OrderMapper.deleteAllOrdersFromReceipt(idReceipt, connectionPool);
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
         }
-        return 0;
     }
+
+    public static int deleteReceipt(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
+    {
+        return ReceiptMapper.deleteReceipt(idReceipt, connectionPool);
+    }
+    // ****************************************************************************************************************
 }

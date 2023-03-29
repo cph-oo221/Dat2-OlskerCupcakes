@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BottomMapper {
-    static Bottom getBottom(String name, ConnectionPool connectionPool) throws DatabaseException {
+public class BottomMapper
+{
+    static Bottom getBottom(String name, ConnectionPool connectionPool) throws DatabaseException
+    {
         Logger.getLogger("web").log(Level.INFO, "");
 
         Bottom bottom;
@@ -24,7 +26,9 @@ public class BottomMapper {
                     int idBottom = rs.getInt("idBottom");
                     int price = rs.getInt("price");
                     bottom = new Bottom(idBottom, name, price);
-                } else {
+                }
+                else
+                {
                     throw new DatabaseException("No Bottom is named that");
                 }
             }
@@ -34,7 +38,8 @@ public class BottomMapper {
         return bottom;
     }
 
-    static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws DatabaseException, SQLException {
+    static Bottom getBottomById(int idBottom, ConnectionPool connectionPool) throws DatabaseException, SQLException
+    {
         Logger.getLogger("web").log(Level.INFO, "");
 
         Bottom bottom;
@@ -49,18 +54,23 @@ public class BottomMapper {
                     String bottomName = rs.getString("name");
                     int price = rs.getInt("price");
                     bottom = new Bottom(idBottom, bottomName, price);
-                } else {
-                    throw new DatabaseException("No Bottom is named that");
                 }
-            } catch (SQLException ex) {
-                throw new DatabaseException(ex, "Error getting Bottom. Something went wrong with the database");
+                else
+                {
+                    throw new DatabaseException("No Bottom with selected id found");
+                }
+            }
+            catch (SQLException ex)
+            {
+                throw new DatabaseException(ex.getMessage());
             }
         }
         return bottom;
     }
 
 
-    static ArrayList<Bottom> getAllBottoms(ConnectionPool connectionPool) throws DatabaseException {
+    static ArrayList<Bottom> getAllBottoms(ConnectionPool connectionPool) throws DatabaseException
+    {
         ArrayList<Bottom> bottomList = new ArrayList<>();
         Logger.getLogger("web").log(Level.INFO, "");
 
@@ -79,8 +89,10 @@ public class BottomMapper {
                     bottomList.add(bottom);
                 }
             }
-        } catch (SQLException ex) {
-            throw new DatabaseException(ex, "Error getting bottom. Something went wrong with the database");
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex.getMessage());
         }
         return bottomList;
     }

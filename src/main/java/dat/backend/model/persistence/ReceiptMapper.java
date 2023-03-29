@@ -3,6 +3,7 @@ package dat.backend.model.persistence;
 import dat.backend.model.entities.OrderItem;
 import dat.backend.model.entities.Receipt;
 import dat.backend.model.exceptions.DatabaseException;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,7 @@ public class ReceiptMapper
                     receiptList.add(receipt);
                 }
                 return receiptList;
-            }
-            catch (SQLException ex)
+            } catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Error getting receipt. Something went wrong with the database");
             }
@@ -65,8 +65,7 @@ public class ReceiptMapper
                     receipt = new Receipt(idReceipt, iduser, timeOfOrder, complete);
                 }
                 return receipt;
-            }
-            catch (SQLException ex)
+            } catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Error getting receipt. Something went wrong with the database");
             }
@@ -98,20 +97,21 @@ public class ReceiptMapper
                     receiptList.add(receipt);
                 }
             }
-        }
-        catch (SQLException ex)
+        } catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error getting receipts. Something went wrong with the database");
         }
         return receiptList;
     }
 
-    static int createReceipt(int iduser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws Exception
+    static int createReceipt(int iduser, List<OrderItem> orderItemList, ConnectionPool connectionPool) throws DatabaseException, SQLException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "insert into receipt (idUser) values (?)";
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
                 ps.setInt(1, iduser);
 
                 int rowsAffected = ps.executeUpdate();
@@ -145,27 +145,28 @@ public class ReceiptMapper
                                         throw new SQLException("The orderItem with the top " + orderItem.getTop().getIdTop() + " and bottom " + orderItem.getBottom().getIdBottom() + " could not be added");
                                     }
                                 }
-                                    return idReceipt;
-                                }
+                                return idReceipt;
+                            }
                         } else
                         {
-                            throw new Exception("The orderItemList is empty");
+                            throw new DatabaseException("The orderItemList is empty");
                         }
                     }
                 } else
                 {
                     throw new DatabaseException("The receipt with iduser = " + iduser + " could not be inserted into the database");
                 }
-            } catch (SQLException ex) {
+            } catch (SQLException ex)
+            {
                 ex.printStackTrace();
             }
         }
         return 0;
     }
 
-    static int deleteReceipt(int idReceipt, ConnectionPool connectionPool) throws SQLException
+    static int deleteReceipt(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
     {
-        if(Facade.deleteAllOrdersFromReceipt(idReceipt, connectionPool)>0)
+        if (Facade.deleteAllOrdersFromReceipt(idReceipt, connectionPool) > 0)
         {
             Logger.getLogger("web").log(Level.INFO, "");
             String sql = "DELETE FROM receipt WHERE idReceipt = ?";
@@ -177,11 +178,12 @@ public class ReceiptMapper
                     return ps.executeUpdate();
                 }
             }
+            catch (SQLException e)
+            {
+                throw new DatabaseException(e.getMessage());
+            }
         }
-        else
-        {
-            return 0; //nothing deleted
-        }
+        return 0;
     }
 
     static void toggleReceipt(int idReceipt, ConnectionPool connectionPool) throws DatabaseException
@@ -194,15 +196,13 @@ public class ReceiptMapper
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setInt(1,idReceipt);
+                ps.setInt(1, idReceipt);
                 ps.executeUpdate();
-            }
-            catch (SQLException ex)
+            } catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Couldn't toggle status of completion");
             }
-        }
-        catch (SQLException ex)
+        } catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error getting receipt. Something went wrong with the database");
         }

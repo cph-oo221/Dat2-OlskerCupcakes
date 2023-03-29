@@ -32,7 +32,7 @@ public class Userpage extends HttpServlet
         }
         catch (DatabaseException e)
         {
-            request.setAttribute("error", e.getMessage());
+            request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
