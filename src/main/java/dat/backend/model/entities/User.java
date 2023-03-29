@@ -24,11 +24,6 @@ public class User
         return email;
     }
 
-    public void setUsername(String username)
-    {
-        this.email = username;
-    }
-
     public String getPassword()
     {
         return password;
