@@ -146,7 +146,6 @@ class UserMapper
 
         String sql = "SELECT balance FROM user WHERE idUser = ?";
         int balance = -1;
-        boolean couldAfford;
 
         try (Connection connection = connectionPool.getConnection())
         {
@@ -171,11 +170,11 @@ class UserMapper
                     int newBalance = balance - price;
                     updateBalance(idUser, newBalance, connectionPool);
                     user.setBalance(newBalance);
-                    return couldAfford = true;
+                    return true;
 
                 } else
                 {
-                    return couldAfford = false;
+                    return false;
                 }
             } else
             {
@@ -187,7 +186,7 @@ class UserMapper
         {
             e.printStackTrace();
         }
-        return couldAfford = false; //Should never happen / You fucked up biiig
+        return false; //Should never happen / You fucked up biiig
     }
 
 }
