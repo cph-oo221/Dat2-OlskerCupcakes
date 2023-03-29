@@ -48,8 +48,14 @@ class UserMapper
     static User createUser(String email, String password, String role, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
-        User user;
-        String sql = "insert into user (email, password, role) values (?,?,?)";
+        User user = getUserByEmail(email, connectionPool);
+
+        if (user != null)
+        {
+            throw new DatabaseException("User already exists");
+        }
+
+       String sql = "insert into user (email, password, role) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
@@ -85,6 +91,35 @@ class UserMapper
             throw new DatabaseException(ex, "Could not insert username into database");
         }
         return user;
+    }
+
+    private static User getUserByEmail(String email, ConnectionPool connectionPool) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "checking if user exists");
+        String sql = "SELECT * FROM user WHERE email = ?;";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+                int idUser = rs.getInt("idUser");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+                int balance = rs.getInt("balance");
+
+              return new User(idUser, email, password, role, balance);
+            }
+            return null;
+        }
+        catch (SQLException e)
+        {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException
