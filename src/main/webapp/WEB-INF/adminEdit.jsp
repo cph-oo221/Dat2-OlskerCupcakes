@@ -67,10 +67,10 @@
                 <input type="text" hidden name="Balance" value="${requestScope.balance}">
                 <input type="text" hidden name="Role" value="${requestScope.role}">
                 <input type="text" hidden name="Password" value="${requestScope.password}">
-                <input type="text" id="balance" name="balance" placeholder="Add balance"/>
+                <input type="text" id="balance" name="balance" placeholder="Set balance"/>
                 <br/>
                 <br/>
-                <input type="submit" class="btn btn-secondary fw-bold" value="Add balance"/>
+                <input type="submit" class="btn btn-secondary fw-bold" value="Set balance"/>
             </form>
         </div>
     </jsp:body>
