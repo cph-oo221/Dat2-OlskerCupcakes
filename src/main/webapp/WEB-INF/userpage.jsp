@@ -34,7 +34,7 @@
                     <c:if test="${receipt.complete == false}">
                         <tr>
                             <td>${receipt.idReceipt}</td>
-                            <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
+                            <td>${receipt.timeOfOrder}</td>
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
@@ -62,7 +62,7 @@
                     <c:if test="${receipt.complete == true}">
                         <tr>
                             <td>${receipt.idReceipt}</td>
-                            <td>${receipt.timeOfOrder}</td> <!-- maybe add a to string -->
+                            <td>${receipt.timeOfOrder}</td>
                             <td>
                                 <form action="Orders" method="post">
                                     <input type="text" hidden name="idReceipt" value="${receipt.idReceipt}">
