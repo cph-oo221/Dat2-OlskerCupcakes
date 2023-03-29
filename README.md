@@ -13,7 +13,7 @@
 * Her er vores **[Rapport.pdf]()**
 
 ### Database:
-* ERR diagram: **[ERR](src/main/resources/ERR.png)**
+* EER diagram: **[EER](src/main/resources/EER.png)**
 * SQL script af **[databasen](src/main/resources/Database.sql)** 
 * Nødvendige fill script til databasen: **[Fill Script](src/main/resources/fillScript.sql)**
 
