@@ -34,7 +34,6 @@
 
         <div class="text-center mt-1">
             <form action="registerUser.jsp" method="post">
-                    <%--  style="text-decoration: none" <- this removes the line under a link/button     --%>
                 <input type="submit" class="btn btn-link" style="text-decoration: none" value="Register new user">
             </form>
         </div>
