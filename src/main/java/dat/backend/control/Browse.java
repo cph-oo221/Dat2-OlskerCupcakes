@@ -26,11 +26,15 @@ public class Browse extends HttpServlet
     {
         ArrayList<Top> tops = new ArrayList<>();
         ArrayList<Bottom> bottoms = new ArrayList<>();
-        try {
+        try
+        {
             tops = Facade.getTops(connectionPool);
             bottoms =  Facade.getBottoms(connectionPool);
-        } catch (DatabaseException e) {
-            e.printStackTrace();
+        }
+        catch (DatabaseException e)
+        {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
         request.getSession().setAttribute("tops", tops);

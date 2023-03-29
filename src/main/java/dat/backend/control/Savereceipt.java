@@ -40,6 +40,7 @@ public class Savereceipt extends HttpServlet
                 {
                     Facade.createReceipt(user.getIdUser(), orderItemList, connectionPool);
                     List<Receipt> receiptList = Facade.getReceiptsByIdUser(user.getIdUser(), connectionPool);
+                    Browse.setOrderItemList(new ArrayList<>());
                     request.setAttribute("receiptList", receiptList);
                     request.setAttribute("orderItemList", new ArrayList<>());
                     request.getRequestDispatcher("WEB-INF/userpage.jsp").forward(request, response);
@@ -51,9 +52,10 @@ public class Savereceipt extends HttpServlet
                     request.getRequestDispatcher("WEB-INF/browse.jsp").forward(request, response);
                 }
             }
-            catch (Exception throwables)
+            catch (Exception e)
             {
-                throwables.printStackTrace();
+                request.setAttribute("errormessage", e.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
             }
 
         } else

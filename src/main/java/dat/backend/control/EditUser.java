@@ -43,7 +43,8 @@ public class EditUser extends HttpServlet
         }
         catch (DatabaseException e)
         {
-            e.printStackTrace();
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
 
         request.getRequestDispatcher("WEB-INF/adminEdit.jsp").forward(request, response);

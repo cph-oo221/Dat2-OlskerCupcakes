@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.User;
+import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
 
@@ -24,7 +25,16 @@ public class DeleteReceipt extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         int idReceipt = Integer.parseInt(request.getParameter("idReceipt"));
-        int rowsaffected = Facade.deleteReceipt(idReceipt, connectionPool);
+        try
+        {
+            int rowsaffected = Facade.deleteReceipt(idReceipt, connectionPool);
+        }
+        catch (DatabaseException e)
+        {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+
         User user = (User) request.getSession().getAttribute("user");
         if(user.getRole().equalsIgnoreCase("user"))
         {

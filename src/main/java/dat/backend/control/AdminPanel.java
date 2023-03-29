@@ -35,9 +35,11 @@ public class AdminPanel extends HttpServlet
         try
         {
             userList = (ArrayList<User>) Facade.getAllUsers(connectionPool);
-        } catch (DatabaseException e)
+        }
+        catch (DatabaseException e)
         {
-            e.printStackTrace();
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         request.setAttribute("userList", userList);
 

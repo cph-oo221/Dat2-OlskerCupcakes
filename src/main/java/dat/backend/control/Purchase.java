@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.User;
+import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
 
@@ -34,17 +35,25 @@ public class Purchase extends HttpServlet
         int total = Integer.parseInt(request.getParameter("total"));
 
         String msg = "";
-        if (Facade.purchase(user,idReceipt, total, connectionPool))
+        try
         {
-           request.getSession().setAttribute("msg", msg);
-           request.getRequestDispatcher("WEB-INF/confirmed.jsp").forward(request, response);
-        }
+            if (Facade.purchase(user,idReceipt, total, connectionPool))
+            {
+               request.getSession().setAttribute("msg", msg);
+               request.getRequestDispatcher("WEB-INF/confirmed.jsp").forward(request, response);
+            }
 
-        else
+            else
+            {
+                msg = "Purchase denied. Not enough funds";
+                request.getSession().setAttribute("msg", msg);
+                response.sendRedirect("userpage");
+            }
+        }
+        catch (DatabaseException e)
         {
-            msg = "Purchase denied. Not enough funds";
-            request.getSession().setAttribute("msg", msg);
-            response.sendRedirect("userpage");
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 }

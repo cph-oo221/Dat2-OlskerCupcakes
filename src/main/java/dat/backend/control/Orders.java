@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.OrderItem;
+import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Facade;
 
@@ -34,7 +35,16 @@ public class Orders extends HttpServlet
         int idReceipt = Integer.parseInt(request.getParameter("idReceipt"));
         boolean complete = Boolean.parseBoolean(request.getParameter("complete"));
 
-        ArrayList<OrderItem> orderItems = (ArrayList<OrderItem>) Facade.getOrderByReceiptId(idReceipt,connectionPool);
+        ArrayList<OrderItem> orderItems = null;
+        try
+        {
+            orderItems = (ArrayList<OrderItem>) Facade.getOrderByReceiptId(idReceipt,connectionPool);
+        }
+        catch (DatabaseException e)
+        {
+           request.setAttribute("errormessage", e.getMessage());
+           request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
 
         int total=0;
         for(OrderItem orderItem : orderItems)
