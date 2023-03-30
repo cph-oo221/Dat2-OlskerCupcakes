@@ -2,13 +2,15 @@ package dat.backend.model.entities;
 
 import java.util.Objects;
 
-public class Top {
+public class Top
+{
     private int idTop;
     private String name;
     private int price;
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Top top = (Top) o;
@@ -16,7 +18,8 @@ public class Top {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(idTop, name, price);
     }
 

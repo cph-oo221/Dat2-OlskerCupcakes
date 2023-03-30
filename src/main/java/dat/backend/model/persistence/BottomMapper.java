@@ -34,7 +34,8 @@ public class BottomMapper
                     throw new DatabaseException("No Bottom is named that");
                 }
             }
-        } catch (SQLException ex)
+        }
+        catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error getting bottom. Something went wrong with the database");
         }
@@ -49,8 +50,10 @@ public class BottomMapper
 
         String sql = "SELECT * FROM bottom WHERE idBottom = ?";
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
                 ps.setInt(1, idBottom);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
@@ -81,8 +84,10 @@ public class BottomMapper
 
         String sql = "SELECT * FROM bottom;";
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     int idBottom = rs.getInt("idBottom");

@@ -29,11 +29,13 @@ public class TopMapper
                     int idTop = rs.getInt("idTop");
                     int price = rs.getInt("price");
                     top = new Top(idTop, name, price);
-                } else
+                }
+                else
                 {
                     throw new DatabaseException("No top is named that");
                 }
-            } catch (SQLException ex)
+            }
+            catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
             }
@@ -60,11 +62,13 @@ public class TopMapper
                     String topName = rs.getString("name");
                     int price = rs.getInt("price");
                     top = new Top(idTop, topName, price);
-                } else
+                }
+                else
                 {
                     throw new DatabaseException("No top is named that");
                 }
-            } catch (SQLException ex)
+            }
+            catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
             }
@@ -96,7 +100,8 @@ public class TopMapper
                     topList.add(top);
                 }
             }
-        } catch (SQLException ex)
+        }
+        catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error getting top. Something went wrong with the database");
         }
