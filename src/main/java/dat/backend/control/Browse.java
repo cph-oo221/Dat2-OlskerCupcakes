@@ -41,6 +41,13 @@ public class Browse extends HttpServlet
         request.getSession().setAttribute("bottoms", bottoms);
         request.getSession().setAttribute("orderItemList", orderItemList);
 
+        int totalSum = 0;
+        for (OrderItem item: orderItemList)
+        {
+            totalSum += item.getTotalPrice();
+        }
+
+        request.getSession().setAttribute("totalSum", totalSum);
         request.getRequestDispatcher("WEB-INF/browse.jsp").forward(request, response);
     }
 
