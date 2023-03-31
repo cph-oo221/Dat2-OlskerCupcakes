@@ -36,7 +36,8 @@ public class ReceiptMapper
                     receiptList.add(receipt);
                 }
                 return receiptList;
-            } catch (SQLException ex)
+            }
+            catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Error getting receipt. Something went wrong with the database");
             }
@@ -65,7 +66,8 @@ public class ReceiptMapper
                     receipt = new Receipt(idReceipt, iduser, timeOfOrder, complete);
                 }
                 return receipt;
-            } catch (SQLException ex)
+            }
+            catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Error getting receipt. Something went wrong with the database");
             }
@@ -97,7 +99,8 @@ public class ReceiptMapper
                     receiptList.add(receipt);
                 }
             }
-        } catch (SQLException ex)
+        }
+        catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error getting receipts. Something went wrong with the database");
         }
@@ -139,7 +142,8 @@ public class ReceiptMapper
                                         psInsertOrder.setInt(3, idBottom);
                                         psInsertOrder.setInt(4, amount);
                                         psInsertOrder.executeUpdate();
-                                    } catch (SQLException e)
+                                    }
+                                    catch (SQLException e)
                                     {
                                         e.printStackTrace();
                                         throw new SQLException("The orderItem with the top " + orderItem.getTop().getIdTop() + " and bottom " + orderItem.getBottom().getIdBottom() + " could not be added");
@@ -147,16 +151,19 @@ public class ReceiptMapper
                                 }
                                 return idReceipt;
                             }
-                        } else
+                        }
+                        else
                         {
                             throw new DatabaseException("The orderItemList is empty");
                         }
                     }
-                } else
+                }
+                else
                 {
                     throw new DatabaseException("The receipt with iduser = " + iduser + " could not be inserted into the database");
                 }
-            } catch (SQLException ex)
+            }
+            catch (SQLException ex)
             {
                 ex.printStackTrace();
             }
@@ -198,11 +205,13 @@ public class ReceiptMapper
             {
                 ps.setInt(1, idReceipt);
                 ps.executeUpdate();
-            } catch (SQLException ex)
+            }
+            catch (SQLException ex)
             {
                 throw new DatabaseException(ex, "Couldn't toggle status of completion");
             }
-        } catch (SQLException ex)
+        }
+        catch (SQLException ex)
         {
             throw new DatabaseException(ex, "Error getting receipt. Something went wrong with the database");
         }

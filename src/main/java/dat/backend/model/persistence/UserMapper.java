@@ -32,7 +32,8 @@ class UserMapper
                     int balance = rs.getInt("balance");
                     int iduser = rs.getInt("iduser");
                     user = new User(iduser, email, password, role, balance);
-                } else
+                }
+                else
                 {
                     throw new DatabaseException("Wrong username or password");
                 }
@@ -80,7 +81,8 @@ class UserMapper
                             throw new DatabaseException("No key found in resultset");
                         }
                     }
-                } else
+                }
+                else
                 {
                     throw new DatabaseException("The user with email = " + email + " could not be inserted into the database");
                 }
@@ -207,11 +209,13 @@ class UserMapper
                     user.setBalance(newBalance);
                     return true;
 
-                } else
+                }
+                else
                 {
                     return false;
                 }
-            } else
+            }
+            else
             {
                 throw new DatabaseException("Couldn't get balance from database");
             }
@@ -223,5 +227,4 @@ class UserMapper
         }
         return false; //Should never happen / You fucked up biiig
     }
-
 }

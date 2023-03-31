@@ -42,7 +42,6 @@ public class Purchase extends HttpServlet
                request.getSession().setAttribute("msg", msg);
                request.getRequestDispatcher("WEB-INF/confirmed.jsp").forward(request, response);
             }
-
             else
             {
                 msg = "Purchase denied. Not enough funds";

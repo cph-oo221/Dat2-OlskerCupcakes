@@ -16,7 +16,8 @@ public class Bottom
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bottom bottom = (Bottom) o;
@@ -24,7 +25,8 @@ public class Bottom
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(idBottom, name, price);
     }
 

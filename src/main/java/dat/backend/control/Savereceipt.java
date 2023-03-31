@@ -45,7 +45,6 @@ public class Savereceipt extends HttpServlet
                     request.setAttribute("orderItemList", new ArrayList<>());
                     request.getRequestDispatcher("WEB-INF/userpage.jsp").forward(request, response);
                 }
-
                 else
                 {
                     request.setAttribute("msg", "Order must consist of at least 1 item");
@@ -58,7 +57,8 @@ public class Savereceipt extends HttpServlet
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
 
-        } else
+        }
+        else
         {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

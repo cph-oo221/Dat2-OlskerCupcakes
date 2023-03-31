@@ -10,7 +10,8 @@ public class Receipt
     private boolean complete;
     private int idReceipt;
 
-    public Receipt(int idReceipt, int iduser, Timestamp timeOfOrder, Boolean complete) {
+    public Receipt(int idReceipt, int iduser, Timestamp timeOfOrder, Boolean complete)
+    {
         this.idReceipt = idReceipt;
         this.iduser = iduser;
         this.timeOfOrder = timeOfOrder;
