@@ -133,7 +133,6 @@ public class Facade
     {
         if (UserMapper.purchase(user , price , connectionPool))
         {
-
             ReceiptMapper.toggleReceipt(idReceipt, connectionPool);
             return true;
         }

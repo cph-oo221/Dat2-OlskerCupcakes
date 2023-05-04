@@ -208,7 +208,6 @@ class UserMapper
                     updateBalance(idUser, newBalance, connectionPool);
                     user.setBalance(newBalance);
                     return true;
-
                 }
                 else
                 {
